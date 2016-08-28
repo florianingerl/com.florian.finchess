@@ -2,7 +2,7 @@
 
 <!--basedir = "." bedeutet Verzeichnis, in dem auch build.xml steht, Ant benutzt es um relative Pfade zu vervollständigen -->
 
-<project name="FinChess" default="run" basedir=".">
+<project name="FinChess" default="junittests" basedir=".">
 
 	<!-- <property file = "filename"/> würde Properties von einer Properties Datei laden -->
 	<property name="src" location="src" />
