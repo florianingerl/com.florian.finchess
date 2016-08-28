@@ -2,13 +2,14 @@
 
 <!--basedir = "." bedeutet Verzeichnis, in dem auch build.xml steht, Ant benutzt es um relative Pfade zu vervollständigen -->
 
-<project name="FinChess" default="junittests" basedir=".">
+<project name="FinChess" default="shortjunittests" basedir=".">
 
 	<!-- <property file = "filename"/> würde Properties von einer Properties Datei laden -->
 	<property name="src" location="src" />
 	<property name="output" location="bin" />
 	<property name="doc" location="doc" />
 	<property name="mainclass" value="UI.Main" />
+	<property name="testreports" value="testreports" />
 
 	<path id="libraries">
 		<pathelement location="Raptor.jar" />
@@ -23,7 +24,7 @@
 	</path>
 
 	<!--Target can noch Attribut if und unless haben, sodass das  das Target nur dann ausgeführt wird, wenn property gesetzt ist oder nicht-->
-	<target name="run" depends="init, compile, shortjunittests">
+	<target name="run" depends="shortjunittests">
 		<java classname="${mainclass}" fork="true">
 			<classpath>
 				<pathelement path="${output}" />
@@ -36,16 +37,17 @@
 
 	<target name="init">
 		<mkdir dir="${output}" />
+		<mkdir dir="${testreports}" />
 	</target>
 
-	<target name="compile">
+	<target name="compile" depends="init">
 		<!-- Ohne debug="yes" kommen keine debug Meldungen -->
 		<javac srcdir="${src}" destdir="${output}" debug="yes">
 			<classpath refid="libraries" />
 		</javac>
 	</target>
 
-	<target name="javadoc">
+	<target name="javadoc" depends="compile">
 		<mkdir dir="${doc}" />
 
 		<javadoc destdir="${doc}">
@@ -63,9 +65,10 @@
 	<target name="clean">
 		<delete dir="${doc}" />
 		<delete dir="${output}" />
+		<delete dir="${testreports}" />
 	</target>
 
-	<target name="jar">
+	<target name="jar" depends="compile">
 
 		<jar destfile="Bittboard.jar" basedir="${output}">
 			<manifest>
@@ -88,6 +91,7 @@
 			<batchtest todir="testreports">
 				<fileset dir="${src}">
 					<include name="**/*Test*.java" />
+					<exclude name="**/NeuralNetTester.java" />
 				</fileset>
 			</batchtest>
 
@@ -110,6 +114,7 @@
 				<fileset dir="${src}">
 					<include name="**/*Test*.java" />
 					<exclude name="**/BasicEngineTest.java" />
+					<exclude name="**/NeuralNetTester.java" />
 				</fileset>
 			</batchtest>
 

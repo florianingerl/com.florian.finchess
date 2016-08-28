@@ -10,6 +10,5 @@
 	<classpathentry kind="lib" path="Raptor.jar"/>
 	<classpathentry kind="lib" path="commons-io-2.5.jar"/>
 	<classpathentry kind="lib" path="commons-math3-3.6.1/commons-math3-3.6.1.jar"/>
-	<classpathentry kind="lib" path="swt.jar" sourcepath="src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
