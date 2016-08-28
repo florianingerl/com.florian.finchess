@@ -1,0 +1,852 @@
+FATAL [Thread-1706] (ShortAlgebraicMoveNotationParser.java:279) -Can't parse moving piece!
+ERROR [Thread-0] (PgnGameAnalyzer.java:53) -Index: 0, Size: 0
+ERROR [main] (PgnGameProducer.java:82) -[Ljava.lang.StackTraceElement;@133314b
+ERROR [Thread-0] (PgnGameAnalyzer.java:53) -Index: 0, Size: 0
+ERROR [main] (Main.java:29) -This is an error message!
+ERROR [main] (Main.java:29) -This is an error message!
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:35) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.VariationNode.getVariation(VariationNode.java:101)
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:46)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:28)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [main] (PgnGameProducer.java:83) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:65)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:73)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:54)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:50)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:40)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:31)
+
+ERROR [main] (PgnGameProducer.java:89) -java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+	at java.util.LinkedList.get(LinkedList.java:476)
+	at Model.PgnGame.loadGame(PgnGame.java:83)
+	at DeepLearning.PgnGameProducer.dealWithPgnFile(PgnGameProducer.java:79)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:60)
+	at DeepLearning.PgnGameProducer.dealWithDirectory(PgnGameProducer.java:56)
+	at DeepLearning.PgnGameProducer.produce(PgnGameProducer.java:46)
+	at DeepLearning.ConsumerProducerPattern.produceAndConsume(ConsumerProducerPattern.java:42)
+	at DeepLearning.Main.main(Main.java:52)
+
+ERROR [Thread-1] (PgnGameAnalyzer.java:83) -java.lang.NullPointerException
+	at DeepLearning.PgnGameAnalyzer.analyseCurrentGame(PgnGameAnalyzer.java:90)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:64)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:85) -Percentage of correct evaluations: 56.96286472148541%
+ERROR [Thread-0] (PgnGameAnalyzer.java:85) -Percentage of correct evaluations: 57.161803713527846%
+ERROR [Thread-0] (PgnGameAnalyzer.java:85) -Percentage of correct evaluations: 51.591511936339515%
+ERROR [Thread-0] (PgnGameAnalyzer.java:79) -org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Unknown Source)
+	at org.eclipse.swt.widgets.Control.redraw(Unknown Source)
+	at DeepLearning.LearningProgressTrackerApp.plotLearningProgress(LearningProgressTrackerApp.java:106)
+	at DeepLearning.PgnGameAnalyzer.testCurrentNeuralNet(PgnGameAnalyzer.java:91)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:70)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
+ERROR [Thread-0] (PgnGameAnalyzer.java:79) -org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.SWT.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.error(Unknown Source)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Unknown Source)
+	at org.eclipse.swt.widgets.Control.redraw(Unknown Source)
+	at DeepLearning.LearningProgressTrackerApp.plotLearningProgress(LearningProgressTrackerApp.java:132)
+	at DeepLearning.PgnGameAnalyzer.testCurrentNeuralNet(PgnGameAnalyzer.java:91)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:70)
+	at DeepLearning.PgnGameAnalyzer.accept(PgnGameAnalyzer.java:1)
+	at DeepLearning.ConsumerProducerPattern$1.run(ConsumerProducerPattern.java:36)
+
