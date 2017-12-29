@@ -31,6 +31,7 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -73,6 +74,9 @@ import Model.VariationNode;
 import Model.VariationTree;
 import Persistence.OpeningBookManager;
 import Persistence.SettingsManager;
+import java.awt.image.BufferedImage;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
 
 public class ChessboardDisplay extends JFrame
 		implements ActionListener, ListSelectionListener, CaretListener, MouseWheelListener, WindowStateListener {
@@ -121,6 +125,13 @@ public class ChessboardDisplay extends JFrame
 			setToolTipText("Save current game as a .pgn (Portable game notation) file");
 		}
 	};
+
+	private JMenuItem saveAsGif = new JMenuItem("Save as .gif") {
+		{
+			setToolTipText("Save current diagramm as a .gif image");
+		}
+	};
+
 	private JMenuItem print = new JMenuItem("Print");
 
 	private JMenu edit = new JMenu("Edit");
@@ -150,7 +161,7 @@ public class ChessboardDisplay extends JFrame
 			setToolTipText("Finish this game and start a new game!");
 		}
 	};
-	
+
 	private JMenuItem buildPositionFromFen = new JMenuItem("from a fen string") {
 		{
 			setToolTipText("Build a position by providing a fen string");
@@ -162,7 +173,7 @@ public class ChessboardDisplay extends JFrame
 			setToolTipText("Build a position by dragging pieces onto the chess board");
 		}
 	};
-	
+
 	private JMenu buildPosition = new JMenu("Build position") {
 		{
 			setToolTipText("Start a game from a position other than the starting position!");
@@ -170,7 +181,7 @@ public class ChessboardDisplay extends JFrame
 			add(buildPositionByHand);
 		}
 	};
-	
+
 	private JMenuItem forceMove = new JMenuItem("Force Move") {
 		{
 			setToolTipText(
@@ -246,6 +257,7 @@ public class ChessboardDisplay extends JFrame
 
 		file.add(openPgn);
 		file.add(savePgn);
+		file.add(saveAsGif);
 		file.add(loadPolyglot);
 		file.add(print);
 		print.setEnabled(false);
@@ -562,6 +574,7 @@ public class ChessboardDisplay extends JFrame
 
 		openPgn.addActionListener(this);
 		savePgn.addActionListener(this);
+		saveAsGif.addActionListener(this);
 		print.addActionListener(this);
 		undo.addActionListener(this);
 		redo.addActionListener(this);
@@ -720,10 +733,10 @@ public class ChessboardDisplay extends JFrame
 
 		} else if (e.getSource() == buildPositionByHand) {
 			menuBuildPositionClicked();
-		} else if(e.getSource() == buildPositionFromFen ){
+		} else if (e.getSource() == buildPositionFromFen) {
 			menuBuildPositionFromFenClicked();
-		}else if (e.getSource() == start) {
-			
+		} else if (e.getSource() == start) {
+
 			buttonStartClicked();
 
 		} else if (e.getSource() == print) {
@@ -759,17 +772,20 @@ public class ChessboardDisplay extends JFrame
 			menuChangeColorClicked();
 		} else if (e.getSource() == savePgn) {
 			menuSavePgnClicked();
+		} else if (e.getSource() == saveAsGif) {
+			menuSaveAsGifClicked();
 		}
 
 	}
 
 	private void menuBuildPositionFromFenClicked() {
 		String fenString = JOptionPane.showInputDialog("Please enter a valid fen string!");
-		if(fenString == null) return;
-		
+		if (fenString == null)
+			return;
+
 		interruptPlayingThread();
 		currentGame.setFenString(fenString);
-		currentGame.setGame(new VariationTree() );
+		currentGame.setGame(new VariationTree());
 		actuallyPlayedMoves = currentGame.getGame();
 		currentMove = actuallyPlayedMoves.getRoot();
 		currentPosition = currentGame.getInitialPosition();
@@ -783,8 +799,49 @@ public class ChessboardDisplay extends JFrame
 		searchForOpeningMoves();
 
 		computersTurn = false;
-		
+
 		resumePlay();
+	}
+
+	private void menuSaveAsGifClicked() {
+		GraphicsConfiguration gfxConf = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
+				.getDefaultConfiguration();
+		BufferedImage image = gfxConf.createCompatibleImage(screen.getWidth(), screen.getHeight());
+		screen.paintComponent(image.createGraphics());
+
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setAcceptAllFileFilterUsed(false);
+		fileChooser.setFileFilter(new javax.swing.filechooser.FileFilter() {
+
+			@Override
+			public boolean accept(File f) {
+				if (f.isDirectory()) {
+					return true;
+				}
+
+				return f.getName().toLowerCase().endsWith(".png");
+			}
+
+			@Override
+			public String getDescription() {
+				return "Portable Network Graphic (*.png)";
+			}
+
+		});
+
+		int result = fileChooser.showSaveDialog(this);
+
+		if (result == JFileChooser.APPROVE_OPTION) {
+
+			File f = fileChooser.getSelectedFile();
+			try {
+				ImageIO.write(image, "png", f);
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(this, "Could not write .png file!");
+			}
+
+		}
+
 	}
 
 	private void menuSavePgnClicked() {
@@ -1212,8 +1269,8 @@ public class ChessboardDisplay extends JFrame
 
 	private void menuBuildPositionClicked() {
 		/*
-		 * Position position = BuildPosition.getBuildPosition(this); if
-		 * (position != null) { interruptPlayingThread();
+		 * Position position = BuildPosition.getBuildPosition(this); if (position !=
+		 * null) { interruptPlayingThread();
 		 * 
 		 * currentPosition = position; screen.setPosition(currentPosition);
 		 * 
@@ -1264,13 +1321,10 @@ public class ChessboardDisplay extends JFrame
 
 				if (m == null) {
 
-					if( currentGame.getFenString() == null)
-					{
+					if (currentGame.getFenString() == null) {
 						engine.setPosition(getMovesFromStart());
-					}
-					else
-					{
-						engine.setPosition( currentPosition.getFenString() );
+					} else {
+						engine.setPosition(currentPosition.getFenString());
 					}
 
 					wantForcedMove = true;

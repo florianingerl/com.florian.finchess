@@ -261,7 +261,7 @@ public class Chessboard extends JLabel implements ComponentListener {
 		for (int i = 0; i <= 7; i++) {
 			for (int j = 0; j <= 7; j++) {
 
-				//Dies könnte man auch vorberechnen, jedesmal wenn square[][] changes
+				//Dies kï¿½nnte man auch vorberechnen, jedesmal wenn square[][] changes
 				if (squares[i][j] != Position.EMPTY)
 					graphics.drawImage(
 							scaledPiecesImages.get(squares[i][j]),
