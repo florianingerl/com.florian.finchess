@@ -28,19 +28,9 @@ import Model.InvalidFenStringException;
 
 public class ExerciseSheetGenerator extends JFrame {
 
-	private PaintableJPanel panel;
-
-
-	private static class PaintableJPanel extends JPanel {
-		@Override
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-		}
-	}
-	
 	public ExerciseSheetGenerator(String title, List<String> exercises) {
 		
-		panel = new PaintableJPanel( );
+		JPanel panel = new JPanel( );
 		panel.setLayout(new GridBagLayout() );
 		panel.setBackground(Color.WHITE);
 		
@@ -88,7 +78,7 @@ public class ExerciseSheetGenerator extends JFrame {
 						.getDefaultConfiguration();
 				BufferedImage image = gfxConf.createCompatibleImage(panel.getWidth(), panel.getHeight());
 				
-				panel.paintComponent(image.createGraphics());
+				panel.paint(image.createGraphics());
 				
 				try {
 					ImageIO.write(image, "png", new File("C:/Users/Hermann/Desktop/ExerciseSheet.png") );
