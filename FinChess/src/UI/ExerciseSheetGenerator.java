@@ -299,8 +299,8 @@ public class ExerciseSheetGenerator extends JFrame {
 					for(int i=4; i < line.length(); ++i) {
 						int piece = Position.EMPTY;
 						switch(line.charAt(i)) {
-							case 'Q': piece = Position.W_QUEEN;
-							case 'q': piece = Position.B_QUEEN;
+							case 'Q': piece = Position.W_QUEEN; break;
+							case 'q': piece = Position.B_QUEEN; break;
 						}
 						exercise.piecesToAdd.add(piece);
 					}
