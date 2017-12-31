@@ -17,10 +17,13 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
+
 import javax.swing.JTextArea;
 import javax.swing.BoxLayout;
 
@@ -191,31 +194,30 @@ public class ExerciseSheetGenerator extends JFrame {
 		exercises.add(new Exercise() {
 			{
 				piecePlacements = "wQc5Be7ka4";
-				//Questions don't work yet!
-				question = "Kann Weiß in einem Zug mattsetzen?";
+				//question = "Kann Weiß in einem Zug mattsetzen?";
 			}
 		});
 		exercises.add(new Exercise() {
 			{
 				piecePlacements = "bba6Ka8qd7";
-				piecesToAdd.add(Position.W_QUEEN);
-				piecesToAdd.add(Position.B_QUEEN);
+				//piecesToAdd.add(Position.W_QUEEN);
+				//piecesToAdd.add(Position.B_QUEEN);
 			}
 		});
 		exercises.add(new Exercise() {
 			{
 				piecePlacements = "wNd5Qg7ke8";
-				piecesToAdd.add(Position.B_QUEEN);
+				//piecesToAdd.add(Position.B_QUEEN);
 			}
 		});
 		exercises.add(new Exercise() {
 			{
 				piecePlacements = "wPh6Qa7kh8";
-				question = "<html>Kann Weiß in einem Zug mattsetzen?<br>Oder nicht?</html>";
+				//question = "<html>Kann Weiß in einem Zug mattsetzen?<br>Oder nicht?</html>";
 			}
 		});
-		
-		/*exercises.add(new Exercise() { { piecePlacements = "wPa7Nd7ka8bb8Bg4"; } });
+	
+		exercises.add(new Exercise() { { piecePlacements = "wPa7Nd7ka8bb8Bg4"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wkf8pf7Ne5Qd5"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wRb1Qb2ka8nc5"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wRe7f7kh8pg7h7bd5"; } });
@@ -223,8 +225,9 @@ public class ExerciseSheetGenerator extends JFrame {
 		exercises.add(new Exercise() { { piecePlacements = "wKf7kh8Pg6ph7"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wNe7Qb1kh5ph4"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wbg8kh8ph7Pg6Nf5"; } });
-		*/
+		
 
+		exercises = parseExercisesFromFile(new File("C:\\GitChess\\FinChess\\src\\ExerciseSheets\\Sheet1.txt") );
 		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt in einem Zug", exercises);
 
 		System.out.println("Finished!");
@@ -274,6 +277,51 @@ public class ExerciseSheetGenerator extends JFrame {
 
 			g.fillOval(0, 0, (int) edgeLength, (int) edgeLength);
 		}
+	}
+	
+	private static List<Exercise> parseExercisesFromFile(File file){
+		List<Exercise> exercises = new LinkedList<Exercise>();
+		
+		try {
+			Scanner scanner = new Scanner(file);
+			Exercise exercise = new Exercise();
+			
+			while(scanner.hasNextLine() ) {
+				String line = scanner.nextLine();
+				if(line.startsWith("pp:" )) {
+					exercise.piecePlacements = line.substring(3);
+					
+				}
+				else if(line.startsWith("q:")) {
+					exercise.question = line.substring(2);
+				}
+				else if(line.startsWith("pta:")) {
+					for(int i=4; i < line.length(); ++i) {
+						int piece = Position.EMPTY;
+						switch(line.charAt(i)) {
+							case 'Q': piece = Position.W_QUEEN;
+							case 'q': piece = Position.B_QUEEN;
+						}
+						exercise.piecesToAdd.add(piece);
+					}
+				}
+				else {
+					exercises.add(exercise);
+					exercise = new Exercise();
+				}
+			}
+			
+			scanner.close();
+			
+			
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		return exercises;
 	}
 
 	private static class Exercise {
