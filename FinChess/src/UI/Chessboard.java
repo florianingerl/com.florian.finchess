@@ -112,6 +112,7 @@ public class Chessboard extends JLabel implements ComponentListener {
 
 	public Chessboard(Position position) {
 		setPosition(position);
+		System.out.println(position.getFenString() );
 		loadScaledImagesOfPieces();
 		this.addComponentListener(this);
 	}
@@ -123,7 +124,7 @@ public class Chessboard extends JLabel implements ComponentListener {
 	}
 	
 	public void setPosition(String fenString) throws InvalidFenStringException{
-		position.setPosition(fenString);	
+		position.setPositionFromFen(fenString);	
 	}
 	
 	protected void loadScaledImagesOfPieces(){
@@ -215,6 +216,7 @@ public class Chessboard extends JLabel implements ComponentListener {
 
 	protected void computeScale() {
 		Dimension size = getSize();
+		//System.out.println("Width:" + size.getWidth() + " Height: " + size.getHeight() );
 		double edgeLength = Math.min(size.getHeight(), size.getWidth());
 
 		// 800 is the default size of the board
@@ -245,6 +247,7 @@ public class Chessboard extends JLabel implements ComponentListener {
 	protected void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
 	
+		componentResized(null);
 		paintBackground(graphics);
 
 		// fehlt scale

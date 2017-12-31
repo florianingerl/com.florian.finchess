@@ -4191,9 +4191,9 @@ public class BasicEngine extends Position implements IEngine, Comparator<Move> {
 	}
 
 	@Override
-	public void setPosition(String fenString) {
+	public void setPositionFromFen(String fenString) {
 
-		super.setPosition(fenString);
+		super.setPositionFromFen(fenString);
 
 		setRedundantBittboardsAndStuff();
 

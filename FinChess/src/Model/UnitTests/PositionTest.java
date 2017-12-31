@@ -402,6 +402,10 @@ public class PositionTest {
 		Position position = Position.fromFenString("1k6/1P6/1K6/8/8/8/8/8 b - - 30 100");
 		assertTrue(position.isStalemate());
 		assertFalse(position.isCheckmate());
+		
+		position = Position.fromPiecePlacements("bka8Qc7Kh1");
+		assertTrue(position.isStalemate());
+		assertFalse(position.isCheckmate() );
 	}
 
 	@Test

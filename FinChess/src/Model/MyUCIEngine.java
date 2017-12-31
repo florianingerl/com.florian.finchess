@@ -81,7 +81,7 @@ public class MyUCIEngine implements IEngine, UCIInfoListener {
 	}
 
 	@Override
-	public void setPosition(String fen) {
+	public void setPositionFromFen(String fen) {
 		// TODO Auto-generated method stub
 
 	}

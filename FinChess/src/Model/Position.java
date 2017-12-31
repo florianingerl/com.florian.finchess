@@ -2,11 +2,16 @@ package Model;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+
+import com.florianingerl.util.regex.CaptureTreeNode;
+import com.florianingerl.util.regex.Matcher;
+import com.florianingerl.util.regex.Pattern;
 
 import Persistence.OpeningBookManager;
 
@@ -204,22 +209,115 @@ public class Position {
 
 	}
 
-	public static Position fromFenString(String fenString)
-	{
+	public static Position fromFenString(String fenString) {
 		return new Position(fenString);
 	}
-	
-	private Position(String fenString) {
 
-		this.setPosition(fenString);
-		this.constructGameLine();
-
+	public static Position fromPiecePlacements(String piecePlacements) {
+		return new Position(piecePlacements);
 	}
 
-	public void setPosition(String fenString) {
+	private Position(String description) {
+		if(description.startsWith("w") || description.startsWith("b")) {
+			this.setPositionFromPiecePlacements(description);
+		}
+		else {
+			this.setPositionFromFen(description);
+		}
+		this.constructGameLine();
+	}
+
+	private static Pattern pPiecePlacements = Pattern
+			.compile("(?<nextMove>w|b)((?<piece>[pPnNbBrRqQkK])(?<square>[a-h][1-8])+)+");
+
+	public void setPositionFromPiecePlacements(String piecePlacements) {
+		Matcher m = pPiecePlacements.matcher(piecePlacements);
+		m.setMode(Matcher.CAPTURE_TREE);
+		if (!m.matches()) {
+			throw new IllegalArgumentException(piecePlacements);
+		}
+
+		m.captureTree().getRoot().getChildren().stream().filter(ctn -> ctn.getGroupNumber() == 2)
+				.forEach(child -> {
+					char letter = child.getChildren().get(0).getCapture().getValue().charAt(0);
+					int piece = EMPTY;
+					switch (letter) {
+					case 'p':
+						piece = B_PAWN;
+						break;
+					case 'r':
+						piece = B_ROOK;
+						break;
+					case 'n':
+						piece = B_KNIGHT;
+						break;
+					case 'b':
+						piece = B_BISHOP;
+						break;
+					case 'q':
+						piece = B_QUEEN;
+						break;
+					case 'k':
+						piece = B_KING;
+						break;
+					case 'P':
+						piece = W_PAWN;
+						break;
+					case 'R':
+						piece = W_ROOK;
+						break;
+					case 'N':
+						piece = W_KNIGHT;
+						break;
+					case 'B':
+						piece = W_BISHOP;
+						break;
+					case 'Q':
+						piece = W_QUEEN;
+						break;
+					case 'K':
+						piece = W_KING;
+						break;
+					default:
+					}
+					
+					Iterator<CaptureTreeNode> it = child.getChildren().iterator();
+					it.next();
+					
+					while(it.hasNext() ) {
+						int sq = SquareRepresentationConverter.getBitFromString( it.next().getCapture().getValue() );
+						square[sq] = piece;
+
+					}
+
+				});
+		
+		initializeBittboardsFromSquare();
+
+		nextMove = 1;
+
+		if (m.group("nextMove").equals("w")) {
+			nextMove = 1;
+		} else {
+			nextMove = -1;
+		}
+		
+		castleWhite = 0;
+		castleBlack = 0;
+
+		epSquare = 0;
+		fiftyMove = 0;
+		numberOfPlayedMoves = 0;
+		
+		endOfSearch = 0;
+	}
+
+	public void setPositionFromFen(String fenString) {
 
 		String[] fenTokens = fenString.split(" ");
 
+		
+		
 		int i, j, state;
 		int sq;
 		char letter;
@@ -2174,7 +2272,8 @@ public class Position {
 
 				rBitstate6 = (byte) ((occupiedSquares & Bitboards.RANKMASK[from]) >>> Bitboards.RANKSHIFT[from]);
 
-				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6]) & targetBitboard;
+				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6])
+						& targetBitboard;
 
 				while (tempMove != 0) {
 					to = Long.numberOfTrailingZeros(tempMove);
@@ -2397,7 +2496,8 @@ public class Position {
 
 				rBitstate6 = (byte) ((occupiedSquares & Bitboards.RANKMASK[from]) >>> Bitboards.RANKSHIFT[from]);
 
-				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6]) & targetBitboard;
+				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6])
+						& targetBitboard;
 
 				while (tempMove != 0) {
 					to = Long.numberOfTrailingZeros(tempMove);
@@ -2496,9 +2596,11 @@ public class Position {
 		if (nextMove == 1) {
 			from = Long.numberOfTrailingZeros(blackKing);
 
-			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[from]) * Bitboards.DIAGA8H1MAGIC[from] >>> 57);
+			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[from])
+					* Bitboards.DIAGA8H1MAGIC[from] >>> 57);
 
-			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[from]) * Bitboards.DIAGA1H8MAGIC[from] >>> 57);
+			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[from])
+					* Bitboards.DIAGA1H8MAGIC[from] >>> 57);
 
 			tempMove |= (Bitboards.DIAGA1H8_ATTACKS[from][diaga1h8Bitstate6]
 					| Bitboards.DIAGA8H1_ATTACKS[from][diaga8h1Bitstate6]) & (whiteQueens | whiteBishops);
@@ -2524,9 +2626,11 @@ public class Position {
 
 			from = Long.numberOfTrailingZeros(whiteKing);
 
-			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[from]) * Bitboards.DIAGA8H1MAGIC[from] >>> 57);
+			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[from])
+					* Bitboards.DIAGA8H1MAGIC[from] >>> 57);
 
-			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[from]) * Bitboards.DIAGA1H8MAGIC[from] >>> 57);
+			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[from])
+					* Bitboards.DIAGA1H8MAGIC[from] >>> 57);
 
 			tempMove |= (Bitboards.DIAGA1H8_ATTACKS[from][diaga1h8Bitstate6]
 					| Bitboards.DIAGA8H1_ATTACKS[from][diaga8h1Bitstate6]) & (blackQueens | blackBishops);
@@ -2865,19 +2969,23 @@ public class Position {
 		case W_BISHOP:
 
 			sb.append('B');
-			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to]) * Bitboards.DIAGA8H1MAGIC[to] >>> 57);
-			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to]) * Bitboards.DIAGA1H8MAGIC[to] >>> 57);
-			tempMove = (Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6] | Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6])
-					& whiteBishops;
+			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to])
+					* Bitboards.DIAGA8H1MAGIC[to] >>> 57);
+			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to])
+					* Bitboards.DIAGA1H8MAGIC[to] >>> 57);
+			tempMove = (Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6]
+					| Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6]) & whiteBishops;
 
 			break;
 		case B_BISHOP:
 
 			sb.append('B');
-			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to]) * Bitboards.DIAGA8H1MAGIC[to] >>> 57);
-			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to]) * Bitboards.DIAGA1H8MAGIC[to] >>> 57);
-			tempMove = (Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6] | Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6])
-					& blackBishops;
+			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to])
+					* Bitboards.DIAGA8H1MAGIC[to] >>> 57);
+			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to])
+					* Bitboards.DIAGA1H8MAGIC[to] >>> 57);
+			tempMove = (Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6]
+					| Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6]) & blackBishops;
 
 			break;
 
@@ -2909,12 +3017,14 @@ public class Position {
 
 			rBitstate6 = (byte) ((occupiedSquares & Bitboards.RANKMASK[to]) >>> Bitboards.RANKSHIFT[to]);
 
-			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to]) * Bitboards.DIAGA8H1MAGIC[to] >>> 57);
-			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to]) * Bitboards.DIAGA1H8MAGIC[to] >>> 57);
+			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to])
+					* Bitboards.DIAGA8H1MAGIC[to] >>> 57);
+			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to])
+					* Bitboards.DIAGA1H8MAGIC[to] >>> 57);
 
 			tempMove = (Bitboards.RANK_ATTACKS[to][rBitstate6] | Bitboards.FILE_ATTACKS[to][fBitstate6]
-					| Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6] | Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6])
-					& whiteQueens;
+					| Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6]
+					| Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6]) & whiteQueens;
 
 			break;
 
@@ -2925,25 +3035,29 @@ public class Position {
 
 			rBitstate6 = (byte) ((occupiedSquares & Bitboards.RANKMASK[to]) >>> Bitboards.RANKSHIFT[to]);
 
-			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to]) * Bitboards.DIAGA8H1MAGIC[to] >>> 57);
-			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to]) * Bitboards.DIAGA1H8MAGIC[to] >>> 57);
+			diaga8h1Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA8H1MASK[to])
+					* Bitboards.DIAGA8H1MAGIC[to] >>> 57);
+			diaga1h8Bitstate6 = (byte) ((occupiedSquares & Bitboards.DIAGA1H8MASK[to])
+					* Bitboards.DIAGA1H8MAGIC[to] >>> 57);
 
 			tempMove = (Bitboards.RANK_ATTACKS[to][rBitstate6] | Bitboards.FILE_ATTACKS[to][fBitstate6]
-					| Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6] | Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6])
-					& blackQueens;
+					| Bitboards.DIAGA1H8_ATTACKS[to][diaga1h8Bitstate6]
+					| Bitboards.DIAGA8H1_ATTACKS[to][diaga8h1Bitstate6]) & blackQueens;
 
 			break;
 
 		case W_KING:
 			sb.append('K');
-			if(move.isCapture())sb.append('x');
+			if (move.isCapture())
+				sb.append('x');
 			sb.append(getFile(to));
 			sb.append(getRank(to));
 			return sb.toString();
 
 		case B_KING:
 			sb.append('K');
-			if(move.isCapture())sb.append('x');
+			if (move.isCapture())
+				sb.append('x');
 			sb.append(getFile(to));
 			sb.append(getRank(to));
 			return sb.toString();
@@ -3447,7 +3561,8 @@ public class Position {
 
 				rBitstate6 = (byte) ((occupiedSquares & Bitboards.RANKMASK[from]) >>> Bitboards.RANKSHIFT[from]);
 
-				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6]) & targetBitboard;
+				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6])
+						& targetBitboard;
 
 				while (tempMove != 0) {
 					to = Long.numberOfTrailingZeros(tempMove);
@@ -3670,7 +3785,8 @@ public class Position {
 
 				rBitstate6 = (byte) ((occupiedSquares & Bitboards.RANKMASK[from]) >>> Bitboards.RANKSHIFT[from]);
 
-				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6]) & targetBitboard;
+				tempMove = (Bitboards.RANK_ATTACKS[from][rBitstate6] | Bitboards.FILE_ATTACKS[from][fBitstate6])
+						& targetBitboard;
 
 				while (tempMove != 0) {
 					to = Long.numberOfTrailingZeros(tempMove);

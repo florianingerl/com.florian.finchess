@@ -1324,7 +1324,7 @@ public class ChessboardDisplay extends JFrame
 					if (currentGame.getFenString() == null) {
 						engine.setPosition(getMovesFromStart());
 					} else {
-						engine.setPosition(currentPosition.getFenString());
+						engine.setPositionFromFen(currentPosition.getFenString());
 					}
 
 					wantForcedMove = true;

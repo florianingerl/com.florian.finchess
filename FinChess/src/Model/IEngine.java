@@ -32,10 +32,10 @@ public interface IEngine {
 	public void setDepth(int depth);
 
 	/**
-	 * Sets the position to the given Forsyth–Edwards Notation string.
-	 * @param fen Forsyth–Edwards Notation string
+	 * Sets the position to the given Forsythï¿½Edwards Notation string.
+	 * @param fen Forsythï¿½Edwards Notation string
 	 */
-	public void setPosition(String fen);
+	public void setPositionFromFen(String fen);
 	
 	public void setPosition(List<Move> movesFromStartingPosition);
 	
