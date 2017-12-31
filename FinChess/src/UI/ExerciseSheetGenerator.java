@@ -50,6 +50,13 @@ public class ExerciseSheetGenerator extends JFrame {
 
 		pieceIcons.put(Position.W_QUEEN, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteQueenIcon.png")));
 		pieceIcons.put(Position.B_QUEEN, new ImageIcon(cl.getResource("ImagesOfPieces/BlackQueenIcon.png")));
+		pieceIcons.put(Position.W_KNIGHT, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteKnightIcon.png")));
+		pieceIcons.put(Position.W_PAWN, new ImageIcon(cl.getResource("ImagesOfPieces/WhitePawnIcon.png")));
+		pieceIcons.put(Position.B_PAWN, new ImageIcon(cl.getResource("ImagesOfPieces/BlackPawnIcon.png")));
+		pieceIcons.put(Position.B_BISHOP, new ImageIcon(cl.getResource("ImagesOfPieces/BlackBishopIcon.png")));
+		pieceIcons.put(Position.B_ROOK, new ImageIcon(cl.getResource("ImagesOfPieces/BlackRookIcon.png")));
+		pieceIcons.put(Position.W_BISHOP, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteBishopIcon.png")));
+		pieceIcons.put(Position.W_KING, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteKingIcon.png")));
 	}
 
 	public ExerciseSheetGenerator(String title, List<Exercise> exercises) {
@@ -227,8 +234,8 @@ public class ExerciseSheetGenerator extends JFrame {
 		exercises.add(new Exercise() { { piecePlacements = "wbg8kh8ph7Pg6Nf5"; } });
 		
 
-		exercises = parseExercisesFromFile(new File("C:\\GitChess\\FinChess\\src\\ExerciseSheets\\Sheet1.txt") );
-		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt in einem Zug", exercises);
+		exercises = parseExercisesFromFile(new File("C:\\GitChess\\FinChess\\src\\ExerciseSheets\\SchachmattAusdenken.txt") );
+		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt ausdenken", exercises);
 
 		System.out.println("Finished!");
 
@@ -301,6 +308,13 @@ public class ExerciseSheetGenerator extends JFrame {
 						switch(line.charAt(i)) {
 							case 'Q': piece = Position.W_QUEEN; break;
 							case 'q': piece = Position.B_QUEEN; break;
+							case 'N': piece = Position.W_KNIGHT;break;
+							case 'P': piece = Position.W_PAWN; break;
+							case 'p': piece = Position.B_PAWN; break;
+							case 'b': piece = Position.B_BISHOP; break;
+							case 'r': piece = Position.B_ROOK; break;
+							case 'K': piece = Position.W_KING; break;
+							case 'B': piece = Position.W_BISHOP; break;
 						}
 						exercise.piecesToAdd.add(piece);
 					}
