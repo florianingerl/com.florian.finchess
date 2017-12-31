@@ -35,36 +35,12 @@ public class Chessboard extends JLabel implements ComponentListener {
 	public static Map<Integer, BufferedImage> piecesImages;
 	protected Map<Integer, BufferedImage> scaledPiecesImages;
 
-	public Chessboard() {
-		setPosition(new Position());
+	static {
 		loadImagesOfPieces();
-		this.addComponentListener(this);
 	}
 
-	public Chessboard(Position position) {
-		setPosition(position);
-		loadImagesOfPieces();
-		this.addComponentListener(this);
-	}
-
-	public Chessboard(String fenString) throws InvalidFenStringException {
-		setPosition(Position.fromFenString(fenString));
-		loadImagesOfPieces();
-		this.addComponentListener(this);
-	}
-	
-	public void setPosition(String fenString) throws InvalidFenStringException{
-		position.setPosition(fenString);	
-	}
-	
-	protected void loadImagesOfPieces(){
-		if(piecesImages!=null){
-			return;
-		}
-		
-		piecesImages = new HashMap<Integer, BufferedImage>(12);
-		scaledPiecesImages = new HashMap<Integer, BufferedImage>(12);
-		
+	private static void loadImagesOfPieces() {
+		piecesImages = new HashMap<Integer, BufferedImage>(12);	
 		
 		BufferedImage whitePawn = null;
 		BufferedImage blackPawn = null;
@@ -81,33 +57,33 @@ public class Chessboard extends JLabel implements ComponentListener {
 		
 		
 		try {
-			whitePawn = ImageIO.read(getClass().getClassLoader()
+			whitePawn = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhitePawn.png"));
-			blackPawn = ImageIO.read(getClass().getClassLoader()
+			blackPawn = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackPawn.png"));
-			whiteKing = ImageIO.read(getClass().getClassLoader()
+			whiteKing = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhiteKing.png"));
-			blackKing = ImageIO.read(getClass().getClassLoader()
+			blackKing = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackKing.png"));
-			whiteKnight = ImageIO.read(getClass().getClassLoader()
+			whiteKnight = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhiteKnight.png"));
-			blackKnight = ImageIO.read(getClass().getClassLoader()
+			blackKnight = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackKnight.png"));
-			whiteBishop = ImageIO.read(getClass().getClassLoader()
+			whiteBishop = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhiteBishop.png"));
-			blackBishop = ImageIO.read(getClass().getClassLoader()
+			blackBishop = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackBishop.png"));
-			whiteRook = ImageIO.read(getClass().getClassLoader()
+			whiteRook = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhiteRock.png"));
-			blackRook = ImageIO.read(getClass().getClassLoader()
+			blackRook = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackRock.png"));
-			whiteQueen = ImageIO.read(getClass().getClassLoader()
+			whiteQueen = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhiteQueen.png"));
-			blackQueen = ImageIO.read(getClass().getClassLoader()
+			blackQueen = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackQueen.png"));
-			whiteBishop = ImageIO.read(getClass().getClassLoader()
+			whiteBishop = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/WhiteBishop.png"));
-			blackBishop = ImageIO.read(getClass().getClassLoader()
+			blackBishop = ImageIO.read(Chessboard.class.getClassLoader()
 					.getResourceAsStream("ImagesOfPieces/BlackBishop.png"));
 
 		} catch (IOException ioe) {
@@ -126,22 +102,36 @@ public class Chessboard extends JLabel implements ComponentListener {
 		piecesImages.put(BasicEngine.B_QUEEN, blackQueen);
 		piecesImages.put(BasicEngine.W_KING, whiteKing);
 		piecesImages.put(BasicEngine.B_KING, blackKing);
+	}
+	
+	public Chessboard() {
+		setPosition(new Position());
+		loadScaledImagesOfPieces();
+		this.addComponentListener(this);
+	}
+
+	public Chessboard(Position position) {
+		setPosition(position);
+		loadScaledImagesOfPieces();
+		this.addComponentListener(this);
+	}
+
+	public Chessboard(String fenString) throws InvalidFenStringException {
+		setPosition(Position.fromFenString(fenString));
+		loadScaledImagesOfPieces();
+		this.addComponentListener(this);
+	}
+	
+	public void setPosition(String fenString) throws InvalidFenStringException{
+		position.setPosition(fenString);	
+	}
+	
+	protected void loadScaledImagesOfPieces(){
+		scaledPiecesImages = new HashMap<Integer, BufferedImage>(12);
 		
-		scaledPiecesImages.put(BasicEngine.W_PAWN, whitePawn);
-		scaledPiecesImages.put(BasicEngine.B_PAWN, blackPawn);
-		scaledPiecesImages.put(BasicEngine.W_KNIGHT, whiteKnight);
-		scaledPiecesImages.put(BasicEngine.B_KNIGHT, blackKnight);
-		scaledPiecesImages.put(BasicEngine.W_BISHOP, whiteBishop);
-		scaledPiecesImages.put(BasicEngine.B_BISHOP, blackBishop);
-		scaledPiecesImages.put(BasicEngine.W_ROOK, whiteRook);
-		scaledPiecesImages.put(BasicEngine.B_ROOK, blackRook);
-		scaledPiecesImages.put(BasicEngine.W_QUEEN, whiteQueen);
-		scaledPiecesImages.put(BasicEngine.B_QUEEN, blackQueen);
-		scaledPiecesImages.put(BasicEngine.W_KING, whiteKing);
-		scaledPiecesImages.put(BasicEngine.B_KING, blackKing);
-		
-		
-		
+		for(int key: piecesImages.keySet() ) {
+			scaledPiecesImages.put(key, piecesImages.get(key));
+		}
 	}
 	
 
