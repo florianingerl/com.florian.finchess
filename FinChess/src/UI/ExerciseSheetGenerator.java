@@ -120,7 +120,24 @@ public class ExerciseSheetGenerator extends JFrame {
 			c.anchor = GridBagConstraints.PAGE_END;
 			panel1.add(piecesToAdd, c);
 
-			JLabel lblQuestion = new JLabel();
+			JLabel lblQuestion = new JLabel() {
+				
+				@Override
+				public Dimension getPreferredSize() {
+					Dimension dim = chessboard.getPreferredSize();
+					return new Dimension(dim.width, 50);
+				}
+				
+				@Override
+				public Dimension getMaximumSize() {
+					return getPreferredSize();
+				}
+				
+				@Override
+				public Dimension getMinimumSize() {
+					return getPreferredSize();
+				}
+			};
 			
 			if (exercise.question != null)
 				lblQuestion.setText(exercise.question);
@@ -175,7 +192,7 @@ public class ExerciseSheetGenerator extends JFrame {
 			{
 				piecePlacements = "wQc5Be7ka4";
 				//Questions don't work yet!
-				//question = "Kann Weiß in einem Zug mattsetzen?";
+				question = "Kann Weiß in einem Zug mattsetzen?";
 			}
 		});
 		exercises.add(new Exercise() {
@@ -194,10 +211,11 @@ public class ExerciseSheetGenerator extends JFrame {
 		exercises.add(new Exercise() {
 			{
 				piecePlacements = "wPh6Qa7kh8";
+				question = "<html>Kann Weiß in einem Zug mattsetzen?<br>Oder nicht?</html>";
 			}
 		});
 		
-		exercises.add(new Exercise() { { piecePlacements = "wPa7Nd7ka8bb8Bg4"; } });
+		/*exercises.add(new Exercise() { { piecePlacements = "wPa7Nd7ka8bb8Bg4"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wkf8pf7Ne5Qd5"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wRb1Qb2ka8nc5"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wRe7f7kh8pg7h7bd5"; } });
@@ -205,7 +223,7 @@ public class ExerciseSheetGenerator extends JFrame {
 		exercises.add(new Exercise() { { piecePlacements = "wKf7kh8Pg6ph7"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wNe7Qb1kh5ph4"; } });
 		exercises.add(new Exercise() { { piecePlacements = "wbg8kh8ph7Pg6Nf5"; } });
-		
+		*/
 
 		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt in einem Zug", exercises);
 

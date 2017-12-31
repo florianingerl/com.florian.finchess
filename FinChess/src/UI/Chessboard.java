@@ -206,7 +206,7 @@ public class Chessboard extends JLabel implements ComponentListener {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(400, 400);
+		return new Dimension(300, 300);
 	}
 	
 	@Override
