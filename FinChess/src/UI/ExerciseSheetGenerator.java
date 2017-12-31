@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.BorderFactory;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -51,6 +52,7 @@ public class ExerciseSheetGenerator extends JFrame {
 		for(String fenString : exercises) {
 			try {
 				Chessboard chessboard = new Chessboard(fenString);
+				chessboard.setBorder(BorderFactory.createLineBorder(Color.BLACK) );
 				c = new GridBagConstraints();
 				c.gridy = i/3 + 1;
 				c.gridx = i%3;
