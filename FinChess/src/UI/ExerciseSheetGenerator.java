@@ -28,22 +28,20 @@ import Model.InvalidFenStringException;
 
 public class ExerciseSheetGenerator extends JFrame {
 
-	
-	
-	private String title;
-	
-	private List<String> exercises = new LinkedList<String>();
-	
-	public void setTitle(String title) {
-		this.title = title;
+	private PaintableJPanel panel;
+
+
+	private static class PaintableJPanel extends JPanel {
+		@Override
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+		}
 	}
 	
-	public void addExercise(String fenString) {
-		exercises.add(fenString);
-	}
-	
-	public void saveAsPdf(File file) {
-		JPanel panel = new JPanel(new GridBagLayout() );
+	public ExerciseSheetGenerator(String title, List<String> exercises) {
+		
+		panel = new PaintableJPanel( );
+		panel.setLayout(new GridBagLayout() );
 		panel.setBackground(Color.WHITE);
 		
 		JLabel lbTitle = new JLabel(title, SwingConstants.CENTER) {
@@ -55,7 +53,7 @@ public class ExerciseSheetGenerator extends JFrame {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridwidth = 3;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(0, 0, 50, 0);
+		c.insets = new Insets(0, 0, 0, 0);
 		
 		panel.add(lbTitle, c);
 		int i = 0;
@@ -72,9 +70,7 @@ public class ExerciseSheetGenerator extends JFrame {
 				++i;
 				
 			} catch (InvalidFenStringException e) {
-				
 				e.printStackTrace();
-				System.exit(1);
 			}
 		}
 		
@@ -92,13 +88,14 @@ public class ExerciseSheetGenerator extends JFrame {
 						.getDefaultConfiguration();
 				BufferedImage image = gfxConf.createCompatibleImage(panel.getWidth(), panel.getHeight());
 				
-				//panel.paintComponent(image.createGraphics());
+				panel.paintComponent(image.createGraphics());
 				
 				try {
-					ImageIO.write(image, "png", file );
+					ImageIO.write(image, "png", new File("C:/Users/Hermann/Desktop/ExerciseSheet.png") );
 				} catch (IOException ioe) {
 					ioe.printStackTrace();
 				}
+				System.out.println("Wrote the file!");
 			}
 			
 		});
@@ -115,15 +112,13 @@ public class ExerciseSheetGenerator extends JFrame {
 	
 
 	public static void main(String [] args) {
-		ExerciseSheetGenerator esg = new ExerciseSheetGenerator();
-		
-		esg.setTitle("Schachmatt in einem Zug");
-		
+		List<String> exercises = new LinkedList<String>();
 		for(int i=0; i < 6; ++i) {
-			esg.addExercise("4rrk1/pp1q2bn/3p2p1/2pP1p2/PnP4B/2NB1Q1P/1P4P1/R4RK1 b - - 0 1");
+			exercises.add("4rrk1/pp1q2bn/3p2p1/2pP1p2/PnP4B/2NB1Q1P/1P4P1/R4RK1 b - - 0 1");
 		}
 		
-		esg.saveAsPdf(new File("C:/Users/Hermann/Desktop/ExerciseSheet.png") );
+		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt in einem Zug", exercises);
+		
 		System.out.println("Finished!");
 		
 		
