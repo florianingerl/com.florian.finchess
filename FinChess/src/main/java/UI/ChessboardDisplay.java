@@ -57,7 +57,8 @@ import javax.swing.event.CaretListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import Model.BasicEngine;
 import Model.FutureTaskCancelWaits;
@@ -81,7 +82,7 @@ import java.awt.GraphicsEnvironment;
 public class ChessboardDisplay extends JFrame
 		implements ActionListener, ListSelectionListener, CaretListener, MouseWheelListener, WindowStateListener {
 
-	private static Logger logger = Logger.getLogger(ChessboardDisplay.class);
+	private static Logger logger = LogManager.getLogger();
 
 	private PgnGame currentGame = new PgnGame() {
 		{

@@ -24,8 +24,9 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import raptor.chess.Move;
 import raptor.engine.uci.UCIBestMove;
@@ -60,7 +61,7 @@ import raptor.util.RaptorStringTokenizer;
  */
 public class RaptorUCIEngine {
 
-	private Logger logger = Logger.getLogger(RaptorUCIEngine.class);
+	private Logger logger = LogManager.getLogger();
 	
 	protected static final String[] SUPPORTED_INFO_TYPES = { "depth",
 			"seldepth", "time", "nodes", "pv", "multipv", "score", "currmove",

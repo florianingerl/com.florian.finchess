@@ -15,12 +15,13 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.omg.CORBA.portable.OutputStream;
 
 public class PgnGamesDownloader {
 
-	private static Logger logger = Logger.getLogger(PgnGamesDownloader.class);
+	private static Logger logger = LogManager.getLogger();
 
 	public static final Pattern PATTERN_DOWNLOAD_LINKS = Pattern.compile(
 			"<\\s*a\\s*href\\s*=\\s*\"([^\"]*?\\.(zip|pgn))\"\\s*class\\s*=\\s*\"view\"\\s*>\\s*Download\\s*</a>");

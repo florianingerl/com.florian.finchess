@@ -11,7 +11,8 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import raptor.chess.Result;
 import raptor.chess.pgn.AbstractPgnParser;
@@ -21,7 +22,7 @@ import raptor.chess.pgn.PgnParserListener;
 
 public class ReadPGN implements PgnParserListener {
 
-	private static Logger logger = Logger.getLogger(ReadPGN.class);
+	private static Logger logger = LogManager.getLogger();
 
 	private Position currentPosition;
 	private VariationTree varationTree;

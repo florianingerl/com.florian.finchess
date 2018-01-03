@@ -13,11 +13,12 @@ import java.security.CodeSource;
 import java.util.Date;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SettingsManager {
 
-	private static Logger logger = Logger.getLogger(SettingsManager.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	private static File settingsFromLastSession;
 	private static Properties properties = new Properties(); 

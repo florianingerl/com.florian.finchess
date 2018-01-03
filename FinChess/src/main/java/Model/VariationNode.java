@@ -5,11 +5,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class VariationNode {
 
-	private static Logger logger = Logger.getLogger(VariationNode.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	private int numberOfMove;
 	private VariationNode earlierMove = null;

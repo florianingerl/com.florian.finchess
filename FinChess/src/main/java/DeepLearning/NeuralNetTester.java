@@ -2,7 +2,8 @@ package DeepLearning;
 
 import java.util.function.Consumer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import Model.PgnGame;
 import Model.Position;
@@ -11,7 +12,7 @@ import Model.VariationTree;
 
 public class NeuralNetTester implements Consumer<PgnGame> {
 
-	private static Logger logger = Logger.getLogger(NeuralNetTester.class);
+	private static Logger logger = LogManager.getLogger();
 
 	private PgnGame currentGame;
 	private Position position = new Position();

@@ -2,11 +2,12 @@ package Model;
 
 import javax.management.RuntimeErrorException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ShortAlgebraicMoveNotationParser {
 
-	private Logger logger = Logger.getLogger(ShortAlgebraicMoveNotationParser.class);
+	private Logger logger = LogManager.getLogger();
 
 	private Position position;
 
@@ -113,8 +114,8 @@ public class ShortAlgebraicMoveNotationParser {
 	private void DetermineUnambigousBlackFromSquare() {
 		switch ((int) theMove.getPiec()) {
 		case (int) BasicEngine.B_QUEEN: {
-			// Tue so als ob weiße Dame auf destination square stehen würde
-			// und schaue, wo sie hinziehen könnte
+			// Tue so als ob weiï¿½e Dame auf destination square stehen wï¿½rde
+			// und schaue, wo sie hinziehen kï¿½nnte
 			targetBitboard = position.getBlackQueens();
 
 			fBitstate6 = (byte) (((position.getOccupiedSquares() & Bitboards.FILEMASK[destination]) * Bitboards.FILEMAGIC[destination]) >>> 57);
@@ -348,8 +349,8 @@ public class ShortAlgebraicMoveNotationParser {
 
 		switch ((int) theMove.getPiec()) {
 		case (int) Position.W_QUEEN: {
-			// Tue so als ob weiße Dame auf destination square stehen würde
-			// und schaue, wo sie hinziehen könnte
+			// Tue so als ob weiï¿½e Dame auf destination square stehen wï¿½rde
+			// und schaue, wo sie hinziehen kï¿½nnte
 			targetBitboard = position.getWhiteQueens();
 
 			fBitstate6 = (byte) (((position.getOccupiedSquares() & Bitboards.FILEMASK[destination])

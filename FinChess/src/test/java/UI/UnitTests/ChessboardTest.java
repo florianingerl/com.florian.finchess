@@ -5,7 +5,8 @@ package UI.UnitTests;
 
 import static org.junit.Assert.*;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ import UI.Chessboard;
  */
 public class ChessboardTest{
 
-	private static Logger logger = Logger.getLogger(ChessboardTest.class);
+	private static Logger logger = LogManager.getLogger();
 	/**
 	 * @throws java.lang.Exception
 	 */

@@ -2,14 +2,15 @@ package Model.UnitTests;
 
 import static org.junit.Assert.*;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import Model.Bitboards;
 
 public class BitboardsTest {
 
-	private static Logger logger = Logger.getLogger(BitboardsTest.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	@Test
 	public void KNIGHT_ATTACKS_OnTheCornersOfTheBoard_ThereAreOnlyTwoKnightMoves() {

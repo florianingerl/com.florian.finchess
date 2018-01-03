@@ -6,7 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import Model.PgnGame;
@@ -17,7 +18,7 @@ import Model.VariationTree;
 
 public class VariationTreeTest {
 
-	private static Logger logger = Logger.getLogger(VariationTreeTest.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	@Test
 	public void getPositionFromCaretTest() {

@@ -5,11 +5,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MyThreadPool {
 
-	private static Logger logger = Logger.getLogger(MyThreadPool.class);
+	private static Logger logger = LogManager.getLogger();
 	private static ExecutorService instance = null;
 
 	public static ExecutorService getPool() {

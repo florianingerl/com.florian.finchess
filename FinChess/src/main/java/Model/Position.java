@@ -7,7 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.florianingerl.util.regex.CaptureTreeNode;
 import com.florianingerl.util.regex.Matcher;
@@ -21,7 +22,7 @@ public class Position {
 	// and methods for making and umaking moves
 	// and a method for checking wheter a move is legal
 
-	private static Logger logger = Logger.getLogger(Position.class);
+	private static Logger logger = LogManager.getLogger();
 
 	public static final int EMPTY = 0;
 	public static final int W_PAWN = 1;

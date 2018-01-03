@@ -7,7 +7,8 @@ import java.util.Random;
 import java.util.function.Consumer;
 
 import org.apache.commons.math3.linear.BlockRealMatrix;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import Model.BasicEngine;
 import Model.PgnGame;
@@ -17,7 +18,7 @@ import Model.VariationTree;
 
 public class PgnGameAnalyzer implements Consumer<PgnGame> {
 
-	private static Logger logger = Logger.getLogger(PgnGameAnalyzer.class);
+	private static Logger logger = LogManager.getLogger();
 
 	private PgnGame currentGame;
 	private Position position = new Position();

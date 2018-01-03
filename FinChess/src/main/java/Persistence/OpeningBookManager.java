@@ -16,7 +16,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import Model.MoveAndStatistik;
 import Model.Position;
@@ -25,7 +26,7 @@ import Model.SquareRepresentationConverter;
 
 public class OpeningBookManager {
 
-	private static Logger logger = Logger.getLogger(OpeningBookManager.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	private static OpeningBookManager instance = null;
 	

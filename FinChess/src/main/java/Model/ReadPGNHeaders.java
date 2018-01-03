@@ -7,11 +7,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ReadPGNHeaders {
 
-	private static Logger logger = Logger.getLogger(ReadPGNHeaders.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	private String pgnGames;
 	private LinkedList<PgnGame> listOfGames = new LinkedList<PgnGame>();

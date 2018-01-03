@@ -8,7 +8,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.SwingUtilities;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import UI.ChessboardDisplay;
 
@@ -22,7 +23,7 @@ import raptor.engine.uci.info.ScoreInfo;
 
 public class MyUCIEngine implements IEngine, UCIInfoListener {
 
-	private static Logger logger = Logger.getLogger(MyUCIEngine.class);
+	private static Logger logger = LogManager.getLogger();
 	
 	private Lock lock = new ReentrantLock();
 	private Condition searchFinished = lock.newCondition();

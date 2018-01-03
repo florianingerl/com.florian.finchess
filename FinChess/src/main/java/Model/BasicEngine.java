@@ -8,14 +8,15 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import DeepLearning.NeuralNet;
 import DeepLearning.PgnGameAnalyzer;
 
 public class BasicEngine extends Position implements IEngine, Comparator<Move> {
 
-	private static Logger logger = Logger.getLogger(BasicEngine.class);
+	private static Logger logger = LogManager.getLogger();
 
 	private Move bestMove = null;
 
