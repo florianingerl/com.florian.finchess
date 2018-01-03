@@ -31,7 +31,7 @@ public class ReadPGNHeadersTest {
 	public void getListOfGames_OfKramnikVsSanan_ReturnsOnlyOneGame() {
 
 		try {
-			ReadPGNHeaders rpn = new ReadPGNHeaders(new FileInputStream("portals_3_files_2014_kataropen_kramniksjugirov.pgn"));
+			ReadPGNHeaders rpn = new ReadPGNHeaders( getClass().getClassLoader().getResourceAsStream("portals_3_files_2014_kataropen_kramniksjugirov.pgn"));
 			rpn.parseHeaders();
 			List<PgnGame> games = rpn.getListOfGames();
 			assertSame(1, games.size());
@@ -79,7 +79,7 @@ public class ReadPGNHeadersTest {
 	public void getListOfGames_OfAlkhines2Nc3d5Games_ReturnsALotOfGames() {
 	{
 		try {
-			ReadPGNHeaders rpn = new ReadPGNHeaders(new FileInputStream("Alekhine2Nc3-d5.pgn"));
+			ReadPGNHeaders rpn = new ReadPGNHeaders(getClass().getClassLoader().getResourceAsStream("Alekhine2Nc3-d5.pgn"));
 			rpn.parseHeaders();
 			List<PgnGame> games = rpn.getListOfGames();
 			
@@ -121,7 +121,7 @@ public class ReadPGNHeadersTest {
 	{
 		
 		try {
-			ReadPGNHeaders rpn = new ReadPGNHeaders(new FileInputStream("inline.pgn"));
+			ReadPGNHeaders rpn = new ReadPGNHeaders(getClass().getClassLoader().getResourceAsStream("inline.pgn"));
 			rpn.parseHeaders();
 			PgnGame game = rpn.getListOfGames().getFirst();
 			

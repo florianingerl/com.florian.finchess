@@ -39,7 +39,7 @@ public class VariationTreeTest {
 	
 	private void getPositionFromCaretTest(boolean san) {
 		try {
-			ReadPGN rpn = new ReadPGN(new File("portals_3_files_2014_kataropen_kramniksjugirov.pgn") );
+			ReadPGN rpn = new ReadPGN(getClass().getClassLoader().getResourceAsStream("portals_3_files_2014_kataropen_kramniksjugirov.pgn") );
 			List<PgnGame> listOfGames = rpn.getListOfGames();
 		
 			VariationTree vt = listOfGames.get(0).getGame();

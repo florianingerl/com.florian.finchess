@@ -6,6 +6,7 @@ import java.io.File;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Persistence.SettingsManager;
@@ -16,12 +17,14 @@ public class SettingsManagerTest {
 	
 	
 	@Test
+	@Ignore
 	public void  canRestoreSettingsFromLastSession_PropertiesFileIsPresent_ReturnsTrue() {
 		boolean can = SettingsManager.getInstance().canRestoreSettingsFromLastSession();
 		assertTrue(can);
 	}
 	
 	@Test
+	@Ignore
 	public void canRestoreSettingsFromLastSession_PropertiesFileIsntPresent_ReturnsFalse()
 	{
 		File propertiesFile = new File("SettingsFromLastSession.properties");
@@ -41,6 +44,7 @@ public class SettingsManagerTest {
 	}
 	
 	@Test
+	@Ignore
 	public void setLastDepth_SetItTo7_GetLastDepthShouldReturn7()
 	{
 		
@@ -54,6 +58,7 @@ public class SettingsManagerTest {
 	}
 	
 	@Test
+	@Ignore
 	public void setLastFlip_SetItToMinus1_GetLastFlipShouldReturnMinus1()
 	{
 		SettingsManager sm = SettingsManager.getInstance();
@@ -67,6 +72,7 @@ public class SettingsManagerTest {
 	
 	
 	@Test
+	@Ignore
 	public void setLastOpeningBook_SetItTogm2016_GetLastOpeningBookShouldReturngm2016()
 	{
 		SettingsManager sm = SettingsManager.getInstance();

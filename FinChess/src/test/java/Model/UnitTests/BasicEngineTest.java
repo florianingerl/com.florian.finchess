@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import Model.Move;
 import Model.MoveEncoding;
@@ -170,6 +171,7 @@ public class BasicEngineTest {
 	}
 
 	@Test
+	@Ignore
 	public void getBestMove_SpectacularQueenSacrificeWinsARook_FindsTheBestMove() {
 		engine.setPositionFromFen("1rb2bk1/p5pp/1nn1p3/q2pP1B1/2pP2B1/1pP3P1/PP1Q3P/RN3NK1 b - - 0 1");
 

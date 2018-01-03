@@ -26,7 +26,7 @@ public class ReadPGNTest {
 	public void getListOfGames_OfKramnikVsSanan_ReturnsOnlyOneGame() {
 
 		try {
-			ReadPGN rpn = new ReadPGN(new File("portals_3_files_2014_kataropen_kramniksjugirov.pgn"));
+			ReadPGN rpn = new ReadPGN(getClass().getClassLoader().getResourceAsStream("portals_3_files_2014_kataropen_kramniksjugirov.pgn"));
 			List<PgnGame> games = rpn.getListOfGames();
 			assertSame(1, games.size());
 
@@ -72,7 +72,7 @@ public class ReadPGNTest {
 	@Test
 	public void getListOfGames_WithAPgnFileContainingThreeGames() {
 		try {
-			ReadPGN rpn = new ReadPGN(new File("12Neckar-Open2009(2).pgn"));
+			ReadPGN rpn = new ReadPGN(getClass().getClassLoader().getResourceAsStream("12Neckar-Open2008(2).pgn"));
 			List<PgnGame> listOfGames = rpn.getListOfGames();
 
 			assertSame(3, listOfGames.size());

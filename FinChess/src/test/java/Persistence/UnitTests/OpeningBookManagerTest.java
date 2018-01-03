@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import Persistence.OpeningBookManager;
@@ -17,6 +18,7 @@ import Model.Position;
 public class OpeningBookManagerTest {
 
 	@Test
+	@Ignore
 	public void getMoveStatistiks_InStartingPosition_ReturnsAllCommonMoves() {
 		
 		
