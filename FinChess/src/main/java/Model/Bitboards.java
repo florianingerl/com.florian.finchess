@@ -508,7 +508,6 @@ public class Bitboards {
 		try {
 			DataInputStream in = new DataInputStream(getClass().getClassLoader()
 					.getResourceAsStream("Resources/Zobrist_Hash_Randoms"));
-
 			// pieces W_PAWN bis W_ROOK
 			for (i = 64; i < 4 * 64; i++) {
 				ZOBRIST_HASH_RANDOMS[i] = in.readLong();
