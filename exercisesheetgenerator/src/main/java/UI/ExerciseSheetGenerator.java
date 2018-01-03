@@ -17,6 +17,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,9 +41,9 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import Model.Position;
-import de.rototor.pdfbox.graphics2d.PdfBoxGraphics2D;
 
 public class ExerciseSheetGenerator extends JPanel {
 
@@ -216,52 +217,8 @@ public class ExerciseSheetGenerator extends JPanel {
 		}
 		System.out.println("Wrote the png file!");
 	}
-
-	public void saveAsPdf(File file) {
-		try {
-			Dimension dim = panel.getPreferredSize();
-			panel.setSize(dim);
-			layoutComponent(panel);
-			PDDocument document = new PDDocument();
-			PDPage page = new PDPage(PDRectangle.A4);
-			document.addPage(page);
-
-			/*
-			 * Creates the Graphics and sets a size in pixel. This size is used for the BBox
-			 * of the XForm. So everything drawn outside (0x0)-(width,height) will be
-			 * clipped.
-			 */
-			PdfBoxGraphics2D pdfBoxGraphics2D = new PdfBoxGraphics2D(document, dim.width, dim.height);
-
-			panel.paint(pdfBoxGraphics2D);
-
-			pdfBoxGraphics2D.dispose();
-
-			/*
-			 * After dispose() of the graphics object we can get the XForm.
-			 */
-			PDFormXObject xform = pdfBoxGraphics2D.getXFormObject();
-
-			PDPageContentStream contentStream = new PDPageContentStream(document, page);
-
-			/*
-			 * Now finally draw the form. As we not do any scaling, the form drawn has a
-			 * size of 5,5 x 5,5 inches, because PDF uses 72 DPI for its lengths by default.
-			 * If you want to scale, skew or rotate the form you can of course do this. And
-			 * you can also draw the form more then once. Think of the XForm as a stamper.
-			 */
-			contentStream.drawForm(xform);
-
-			contentStream.close();
-
-			document.save(file);
-			document.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Wrote the pdf file!");
-	}
-
+	
+	
 	public void showInAJFrame() {
 		JFrame frame = new JFrame();
 		JPanel contentPanel = (JPanel) frame.getContentPane();
@@ -279,8 +236,9 @@ public class ExerciseSheetGenerator extends JPanel {
 		List<Exercise> exercises = parseExercisesFromStream(
 				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SchachmattAusdenken.txt"));
 		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt ausdenken", exercises);
-		esg.saveAsPng(new File("C:/Users/Hermann/Desktop/ExerciseSheet.png"));
-		esg.saveAsPdf(new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));
+		File pngFile = new File("C:/Users/Hermann/Desktop/ExerciseSheet.png");
+		esg.saveAsPng(pngFile);
+		ImageToPdfConverter.convertImgToPDF(pngFile, new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));
 		System.out.println("Finished!");
 	}
 
