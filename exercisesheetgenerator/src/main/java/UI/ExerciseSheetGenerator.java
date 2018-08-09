@@ -244,7 +244,7 @@ public class ExerciseSheetGenerator extends JPanel {
 		System.out.println("Finished!");
 	}
 
-	private static List<Exercise> parseExercisesFromStream(InputStream stream) {
+	public static List<Exercise> parseExercisesFromStream(InputStream stream) {
 		List<Exercise> exercises = new LinkedList<Exercise>();
 
 		Scanner scanner = new Scanner(stream);

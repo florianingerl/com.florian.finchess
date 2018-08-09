@@ -1,19 +1,15 @@
 package UI;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
 
 import Model.BasicEngine;
 import Model.Position;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.layout.Pane;
-
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class ChessboardFX extends Pane {
 
@@ -76,8 +72,8 @@ public class ChessboardFX extends Pane {
 	protected Color colorBlackSquare = Color.color(153/256.0, 204/256.0, 255/256.0);
 	protected Color colorWhiteSquare = Color.WHITE;
 	
-	public ChessboardFX() {
-		position = new Position();
+	public ChessboardFX(Position position) {
+		this.position =position;
 		redrawPosition();
 		canvas = new Canvas(SIZE, SIZE);
 		getChildren().add(canvas);
@@ -85,6 +81,10 @@ public class ChessboardFX extends Pane {
 		heightProperty().addListener(e -> canvas.setHeight(getHeight()));
 	}
 
+	public ChessboardFX() {
+		this(new Position());
+	}
+	
 	@Override
 	protected void layoutChildren() {
 		super.layoutChildren();
