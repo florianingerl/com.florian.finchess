@@ -66,6 +66,8 @@ public class ExerciseSheetGenerator extends JPanel {
 		pieceIcons.put(Position.B_ROOK, new ImageIcon(cl.getResource("ImagesOfPieces/BlackRookIcon.png")));
 		pieceIcons.put(Position.W_BISHOP, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteBishopIcon.png")));
 		pieceIcons.put(Position.W_KING, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteKingIcon.png")));
+		pieceIcons.put(Position.W_ROOK, new ImageIcon(cl.getResource("ImagesOfPieces/WhiteRookIcon.png")));
+		pieceIcons.put(Position.B_KNIGHT, new ImageIcon(cl.getResource("ImagesOfPieces/BlackKnightIcon.png")));
 	}
 
 	private String title;
@@ -148,12 +150,12 @@ public class ExerciseSheetGenerator extends JPanel {
 			c.anchor = GridBagConstraints.PAGE_END;
 			panel1.add(piecesToAdd, c);
 
-			JLabel lblQuestion = new JLabel() {
+			JLabel lblQuestion = new JLabel("<html><ul style=\"list-style-type:circle\"><li style=\"display:inline; float:left\">Matt</li><li style=\"display:inline; float:left\">Patt</li><li style=\"display:inline; float:left\">Schwarz zieht 1...</li></ul></html>") {
 
 				@Override
 				public Dimension getPreferredSize() {
 					Dimension dim = chessboard.getPreferredSize();
-					return new Dimension(dim.width, 50);
+					return new Dimension(dim.width, 70);
 				}
 
 				@Override
@@ -234,8 +236,8 @@ public class ExerciseSheetGenerator extends JPanel {
 
 	public static void main(String[] args) {
 		List<Exercise> exercises = parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SchachmattAusdenken.txt"));
-		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Schachmatt ausdenken", exercises);
+				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("MattPattOderSchwarzZieht.txt"));
+		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Matt, Patt oder Schwarz zieht 1...", exercises);
 		File pngFile = new File("C:/Users/Hermann/Desktop/ExerciseSheet.png");
 		esg.saveAsPng(pngFile);
 		ImageToPdfConverter.convertImgToPDF(pngFile, new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));
@@ -285,6 +287,12 @@ public class ExerciseSheetGenerator extends JPanel {
 						break;
 					case 'B':
 						piece = Position.W_BISHOP;
+						break;
+					case 'R':
+						piece = Position.W_ROOK;
+						break;
+					case 'n':
+						piece = Position.B_KNIGHT;
 						break;
 					}
 					exercise.piecesToAdd.add(piece);
