@@ -1,19 +1,9 @@
--fx-background-color: inherit;
-
 .root {
 	-fx-background-color: white;
 }
 
-.gridPane {
-	-fx-background-color: white;
-}
-
-.vbox {
-	-fx-background-color: white;
-}
-
-.label {
-	-fx-background-color: white;
+.node {
+	-fx-background-color: inherit;
 }
 
 .title {
