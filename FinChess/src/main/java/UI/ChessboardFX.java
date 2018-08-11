@@ -85,6 +85,10 @@ public class ChessboardFX extends Pane {
 		this(new Position());
 	}
 	
+	public void setColorBlackSquare(Color color){
+		this.colorBlackSquare = color;
+	}
+	
 	@Override
 	protected void layoutChildren() {
 		super.layoutChildren();
@@ -114,6 +118,9 @@ public class ChessboardFX extends Pane {
 				gc.fillRect(i * 100, j * 100, 100, 100);
 			}
 		}
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(5);
+		gc.strokeRect(0,0,800,800);
 	}
 
 	private void drawPieces(GraphicsContext gc) {
