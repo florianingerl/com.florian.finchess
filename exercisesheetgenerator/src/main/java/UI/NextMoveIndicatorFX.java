@@ -1,8 +1,16 @@
 package UI;
 
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
+import Model.Position;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -17,8 +25,8 @@ public class NextMoveIndicatorFX extends Pane {
 		this.nextMove = nextMove;
 		setPrefWidth(SIZE);
 		setPrefHeight(SIZE);
-		setWidth(SIZE);
-		setHeight(SIZE);
+		setMinWidth(10);
+		setMinHeight(10);
 		
 		canvas = new Canvas(SIZE, SIZE);
 		getChildren().add(canvas);
@@ -45,5 +53,7 @@ public class NextMoveIndicatorFX extends Pane {
 		gc.setLineWidth(2);
 		gc.strokeOval(0,0,edgeLength, edgeLength);
 	}
+	
+	
 	
 }

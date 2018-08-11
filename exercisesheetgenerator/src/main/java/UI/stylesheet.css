@@ -8,9 +8,25 @@
 
 .title {
     -fx-font-size: 30;
+    -fx-font-weight: bold;
+}
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area .content {
+    -fx-padding: 1px;
+    -fx-text-fill: gray;
+    -fx-highlight-fill: #7ecfff;
 }
 
 .labelNumber {
-	-fx-font-style: bold;
+	-fx-font-weight: bold;
 	-fx-font-size: 13;
 }

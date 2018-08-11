@@ -1,5 +1,8 @@
 package UI;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +22,36 @@ public class ChessboardFX extends Pane {
 
 	static {
 		loadImagesOfPieces();
+	}
+	
+	//Chesssets can be downloaded from https://github.com/Raptor-Fics-Interface/Raptor/tree/master/raptor/resources/set
+	public static void loadChessSet(File dir) throws FileNotFoundException {
+		piecesImages = new HashMap<Integer, Image>();
+		Image whitePawn = new Image(new FileInputStream(new File(dir,"wp.png")));
+		Image blackPawn =  new Image(new FileInputStream(new File(dir,"bp.png")));
+		Image whiteKing =  new Image(new FileInputStream(new File(dir,"wk.png")));
+		Image blackKing =  new Image(new FileInputStream(new File(dir,"bk.png")));
+		Image whiteKnight =  new Image(new FileInputStream(new File(dir,"wn.png")));
+		Image blackKnight =  new Image(new FileInputStream(new File(dir,"bn.png")));
+		Image whiteBishop =  new Image(new FileInputStream(new File(dir,"wb.png")));
+		Image blackBishop =  new Image(new FileInputStream(new File(dir,"bb.png")));
+		Image whiteRook =  new Image(new FileInputStream(new File(dir,"wr.png")));
+		Image blackRook =  new Image(new FileInputStream(new File(dir,"br.png")));
+		Image whiteQueen =  new Image(new FileInputStream(new File(dir,"wq.png")));
+		Image blackQueen =  new Image(new FileInputStream(new File(dir,"bq.png")));
+
+		piecesImages.put(BasicEngine.W_PAWN, whitePawn);
+		piecesImages.put(BasicEngine.B_PAWN, blackPawn);
+		piecesImages.put(BasicEngine.W_KNIGHT, whiteKnight);
+		piecesImages.put(BasicEngine.B_KNIGHT, blackKnight);
+		piecesImages.put(BasicEngine.W_BISHOP, whiteBishop);
+		piecesImages.put(BasicEngine.B_BISHOP, blackBishop);
+		piecesImages.put(BasicEngine.W_ROOK, whiteRook);
+		piecesImages.put(BasicEngine.B_ROOK, blackRook);
+		piecesImages.put(BasicEngine.W_QUEEN, whiteQueen);
+		piecesImages.put(BasicEngine.B_QUEEN, blackQueen);
+		piecesImages.put(BasicEngine.W_KING, whiteKing);
+		piecesImages.put(BasicEngine.B_KING, blackKing);
 	}
 
 	private static void loadImagesOfPieces() {

@@ -14,10 +14,10 @@ pp:wKg8Nh8pf4kb6
 q:Auf welchem Feld ist der Tempogewinn?
 
 pp:wKg8Nh8pf4kb4
-q:Auf welchem Feld ist der Tempogewinn?
+q:Auf welchem Feld ist die Springergabel?
 
 pp:wKg8Nh8pf4kb3
-q:Auf welchem Feld ist der Tempogewinn?
+q:Wo ist das Familienschach?
 
 pp:wKg8Nh8pf4kb2
 q:Auf welchem Feld ist der Tempogewinn?

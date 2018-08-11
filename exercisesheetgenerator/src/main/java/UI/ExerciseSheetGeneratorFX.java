@@ -1,6 +1,7 @@
 package UI;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import Model.Position;
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
@@ -30,9 +32,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.Group;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.BorderPane;
+import javafx.geometry.Orientation;
+import javafx.scene.text.TextAlignment;
 
 public class ExerciseSheetGeneratorFX extends Application {
-	
+
 	public static Map<Integer, Image> pieceIcons;
 
 	static {
@@ -55,10 +59,10 @@ public class ExerciseSheetGeneratorFX extends Application {
 		pieceIcons.put(Position.W_ROOK, new Image(cl.getResourceAsStream("ImagesOfPieces/WhiteRookIcon.png")));
 		pieceIcons.put(Position.B_KNIGHT, new Image(cl.getResourceAsStream("ImagesOfPieces/BlackKnightIcon.png")));
 	}
-	
+
 	private String title;
 	private List<Exercise> exercises;
-	
+
 	private GridPane gridPane;
 
 	public static void main(String[] args) {
@@ -68,101 +72,110 @@ public class ExerciseSheetGeneratorFX extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		title = "Kann der Springer den Bauern noch stoppen?";
+		title = "Kann der Springer den Bauern stoppen?";
 		exercises = ExerciseSheetGenerator.parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer2.txt"));
+				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt"));
 		buildUI();
-		Scene scene = new Scene(gridPane, PDRectangle.A4.getWidth(), PDRectangle.A4.getHeight());
-		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm() );
 		
-		stage.setScene(scene); 
-        stage.setResizable(false);
-        stage.show();  
-        
-        WritableImage image = gridPane.snapshot(new SnapshotParameters(), null);
+		Scene scene = new Scene(gridPane, PDRectangle.A4.getWidth(), PDRectangle.A4.getHeight());
+		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
-        // TODO: probably use a file chooser here
-        File imageFile = new File("C:/Users/Hermann/ExerciseSheet.png");
-        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
-        
-        ImageToPdfConverter.convertImgToPDF(imageFile, new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.show();
+
+		WritableImage image = gridPane.snapshot(new SnapshotParameters(), null);
+
+		// TODO: probably use a file chooser here
+		File imageFile = new File("C:/Users/Hermann/ExerciseSheet.png");
+		ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
+
+		ImageToPdfConverter.convertImgToPDF(imageFile, new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));
 
 		System.out.println("Finished!");
 	}
-	
-	private void buildUI() {
+
+	private void buildUI() throws Exception{
 		gridPane = new GridPane();
 		gridPane.setVgap(10);
 		gridPane.setHgap(10);
+		gridPane.setPadding(new Insets(0, 0, 10, 0));
 		gridPane.setGridLinesVisible(true);
-		
-		Label lblTitle = new Label(title);
+
+		Label lblTitle = new Label();
+		lblTitle.setText(title);
+		lblTitle.setTextAlignment(TextAlignment.CENTER);
 		lblTitle.getStyleClass().add("title");
-		
-		gridPane.add(lblTitle, 0, 0,3,1);
+
+		gridPane.add(lblTitle, 0, 0, 3, 1);
 		GridPane.setHalignment(lblTitle, HPos.CENTER);
-		
-		/*ColumnConstraints [] columnConstraints = new ColumnConstraints[3];
-		for(int i=0; i< 3; ++i) {
-			columnConstraints[i] = new ColumnConstraints();
-			columnConstraints[i].setPercentWidth(1.0/3.0);
-		}
-		gridPane.getColumnConstraints().addAll(columnConstraints);*/
-		
-		
+
+		/*
+		 * ColumnConstraints [] columnConstraints = new ColumnConstraints[3]; for(int
+		 * i=0; i< 3; ++i) { columnConstraints[i] = new ColumnConstraints();
+		 * columnConstraints[i].setFillWidth(true);
+		 * columnConstraints[i].setPercentWidth(1.0/3.0); }
+		 * gridPane.getColumnConstraints().addAll(columnConstraints);
+		 */
+
 		int i = 0;
 
 		for (Exercise exercise : exercises) {
 
 			System.out.println(exercise.piecePlacements);
-			
+
 			GridPane pane1 = new GridPane();
-			gridPane.add(pane1,  i % 3, i / 3 + 1);
+			gridPane.add(pane1, i % 3, i / 3 + 1);
 
 			Label lblNr = new Label();
-			lblNr.setText("Aufgabe "+ (i+1) +")");
+			lblNr.setText("Aufgabe " + (i + 1) + ")");
 			lblNr.getStyleClass().add("labelNumber");
-			pane1.add(lblNr, 0, 0,2,1);
-			
+			pane1.add(lblNr, 0, 0, 2, 1);
+
 			Position position = Position.fromPiecePlacements(exercise.piecePlacements);
 			ChessboardFX chessboard = new ChessboardFX(position);
-			chessboard.setColorBlackSquare(Color.color(199/256.0, 199/256.0, 199/256.0));
-			
-			pane1.add(chessboard, 0, 1,1,2);
-			
+			chessboard.setColorBlackSquare(Color.color(199 / 256.0, 199 / 256.0, 199 / 256.0));			
+			pane1.add(chessboard, 1, 1, 1, 2);
+
 			NextMoveIndicatorFX nmi = new NextMoveIndicatorFX(position.getNextMove());
 			GridPane.setHalignment(nmi, HPos.LEFT);
 			GridPane.setValignment(nmi, VPos.TOP);
-			pane1.add(nmi, 1, 1);
-			
+			pane1.add(nmi, 0, 1);
+
 			VBox piecesToAdd = new VBox();
 			piecesToAdd.setAlignment(Pos.BOTTOM_LEFT);
-	
+
 			for (int piece : exercise.piecesToAdd) {
 				piecesToAdd.getChildren().add(new ImageView(pieceIcons.get(piece)));
 			}
 
 			GridPane.setValignment(piecesToAdd, VPos.BOTTOM);
-			pane1.add(piecesToAdd, 1,2);
-			
-			/*TextArea taQuestion = new TextArea();
-			taQuestion.setPrefRowCount(3);
-			taQuestion.setWrapText(true);
+			pane1.add(piecesToAdd, 0, 2);
+
+			/*
+			 * TextArea taQuestion = new TextArea(); taQuestion.setPrefRowCount(3);
+			 * taQuestion.setWrapText(true); if (exercise.question != null)
+			 * taQuestion.setText(exercise.question);
+			 * 
+			 * pane1.add(new Group(taQuestion), 0,2,2,1);
+			 */
+
+			/*Label lblQuestion = new Label();
 			if (exercise.question != null)
-				taQuestion.setText(exercise.question);
-
-			pane1.add(new Group(taQuestion), 0,2,2,1);*/
-
-			Label lblQuestion = new Label();
-			if(exercise.question!=null)
 				lblQuestion.setText(exercise.question);
+
+			pane1.add(lblQuestion, 0, 3, 2, 1);*/
 			
-			pane1.add(lblQuestion, 0, 3,2,1);
+			/*MyTextArea taQuestion = new MyTextArea();
+			taQuestion.setWrapText(true);
+			if(exercise.question!=null)
+				taQuestion.setText(exercise.question);
 			
+			pane1.add(taQuestion, 0, 3,2,1);*/
+
 			++i;
 
 		}
-		
-		
+
 	}
 }
