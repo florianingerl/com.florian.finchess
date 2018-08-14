@@ -182,7 +182,7 @@ public class ExerciseSheetGenerator extends JPanel {
 			c.gridwidth = 1;
 			c.gridy = 2;
 
-			panel1.add(lblQuestion, c);
+			//panel1.add(lblQuestion, c);
 
 			++i;
 
@@ -236,9 +236,15 @@ public class ExerciseSheetGenerator extends JPanel {
 	}
 
 	public static void main(String[] args) {
+		try {
+			Chessboard.loadChessSet(new File("C:\\Users\\Hermann\\Desktop\\100\\100"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<Exercise> exercises = parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("MattPattOderSchwarzZieht.txt"));
-		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Matt, Patt oder Schwarz zieht 1...", exercises);
+				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt"));
+		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Kann der Springer den Bauern stoppen?", exercises);
 		File pngFile = new File("C:/Users/Hermann/Desktop/ExerciseSheet.png");
 		esg.saveAsPng(pngFile);
 		ImageToPdfConverter.convertImgToPDF(pngFile, new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));

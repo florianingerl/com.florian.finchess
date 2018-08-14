@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +20,7 @@ import Model.BasicEngine;
 import Model.InvalidFenStringException;
 import Model.Move;
 import Model.Position;
+import javafx.scene.image.Image;
 
 public class Chessboard extends JLabel implements ComponentListener {
 
@@ -37,6 +40,37 @@ public class Chessboard extends JLabel implements ComponentListener {
 
 	static {
 		loadImagesOfPieces();
+	}
+	
+	public static void loadChessSet(File dir) throws IOException {
+		
+		BufferedImage whitePawn = ImageIO.read(new File(dir,"wp.png"));
+		BufferedImage blackPawn =  ImageIO.read(new File(dir,"bp.png"));
+		BufferedImage whiteKing =  ImageIO.read(new File(dir,"wk.png"));
+		BufferedImage blackKing =  ImageIO.read(new File(dir,"bk.png"));
+		BufferedImage whiteKnight =  ImageIO.read(new File(dir,"wn.png"));
+		BufferedImage blackKnight =  ImageIO.read(new File(dir,"bn.png"));
+		BufferedImage whiteBishop =  ImageIO.read(new File(dir,"wb.png"));
+		BufferedImage blackBishop =  ImageIO.read(new File(dir,"bb.png"));
+		BufferedImage whiteRook =  ImageIO.read(new File(dir,"wr.png"));
+		BufferedImage blackRook =  ImageIO.read(new File(dir,"br.png"));
+		BufferedImage whiteQueen =  ImageIO.read(new File(dir,"wq.png"));
+		BufferedImage blackQueen =  ImageIO.read(new File(dir,"bq.png"));
+		
+		
+		piecesImages.put(BasicEngine.W_PAWN, whitePawn);
+		piecesImages.put(BasicEngine.B_PAWN, blackPawn);
+		piecesImages.put(BasicEngine.W_KNIGHT, whiteKnight);
+		piecesImages.put(BasicEngine.B_KNIGHT, blackKnight);
+		piecesImages.put(BasicEngine.W_BISHOP, whiteBishop);
+		piecesImages.put(BasicEngine.B_BISHOP, blackBishop);
+		piecesImages.put(BasicEngine.W_ROOK, whiteRook);
+		piecesImages.put(BasicEngine.B_ROOK, blackRook);
+		piecesImages.put(BasicEngine.W_QUEEN, whiteQueen);
+		piecesImages.put(BasicEngine.B_QUEEN, blackQueen);
+		piecesImages.put(BasicEngine.W_KING, whiteKing);
+		piecesImages.put(BasicEngine.B_KING, blackKing);
+		
 	}
 
 	private static void loadImagesOfPieces() {
