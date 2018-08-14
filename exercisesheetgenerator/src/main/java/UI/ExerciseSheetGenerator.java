@@ -36,6 +36,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import org.apache.pdfbox.contentstream.operator.text.SetTextHorizontalScaling;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -106,6 +107,7 @@ public class ExerciseSheetGenerator extends JPanel {
 
 		for (Exercise exercise : exercises) {
 
+			
 			System.out.println(exercise.piecePlacements);
 
 			JPanel panel1 = new JPanel(new GridBagLayout());
@@ -118,6 +120,23 @@ public class ExerciseSheetGenerator extends JPanel {
 
 			panel.add(panel1, c);
 
+			JLabel lblExercise  = new JLabel("Aufgabe "+(i+1) +")"){
+				{
+					setFont(new Font("Arial", Font.BOLD, 30));
+					setBackground(Color.WHITE);
+					Dimension dim = getPreferredSize();
+					//dim.height = 75;
+					setPreferredSize(dim);
+					setHorizontalAlignment(SwingConstants.LEFT);
+				}
+			};
+			
+			c = new GridBagConstraints();
+			c.fill = GridBagConstraints.NONE;
+			c.gridwidth = 2;
+			c.anchor = GridBagConstraints.WEST;
+			panel1.add(lblExercise, c);
+			
 			Chessboard chessboard = new Chessboard(Position.fromPiecePlacements(exercise.piecePlacements));
 			chessboard.setColorBlackSquare(new Color(199, 199, 199));
 			chessboard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -125,11 +144,13 @@ public class ExerciseSheetGenerator extends JPanel {
 			c = new GridBagConstraints();
 			c.fill = GridBagConstraints.NONE;
 			c.gridheight = 2;
+			c.gridy = 1;
 			panel1.add(chessboard, c);
 
 			NextMoveIndicator nmi = new NextMoveIndicator(chessboard.getPosition().getNextMove());
 			c = new GridBagConstraints();
 			c.gridx = 1;
+			c.gridy = 1;
 			c.anchor = GridBagConstraints.PAGE_START;
 			panel1.add(nmi, c);
 
@@ -147,7 +168,7 @@ public class ExerciseSheetGenerator extends JPanel {
 
 			c = new GridBagConstraints();
 			c.gridx = 1;
-			c.gridy = 1;
+			c.gridy = 2;
 			c.anchor = GridBagConstraints.PAGE_END;
 			panel1.add(piecesToAdd, c);
 
@@ -180,7 +201,7 @@ public class ExerciseSheetGenerator extends JPanel {
 
 			c = new GridBagConstraints();
 			c.gridwidth = 1;
-			c.gridy = 2;
+			c.gridy = 3;
 
 			//panel1.add(lblQuestion, c);
 
