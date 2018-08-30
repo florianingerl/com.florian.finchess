@@ -184,12 +184,16 @@ public class PositionImageGenerator {
 	}
 	
 	public static void main(String [] args) {
-		Position pos = Position.fromPiecePlacements("wKa8Na4ke2qb1");
+		Position pos = Position.fromPiecePlacements("wKa8Nb8kh1pb4");
 		PositionImageGenerator pig = new PositionImageGenerator(pos);
-		pig.addArrow(new Arrow("a4","c3", Color.GREEN) );
-		pig.addArrow(new Arrow("c3", "b1", Color.BLUE));
-		pig.addArrow(new Arrow("c3", "e2", Color.BLUE));
-		pig.createImageFile(new File("C:\\GitChess\\SchulschachSpringerGegenBauern\\images\\Image5.png"));
+		
+		pig.addArrow(new Arrow("b8","c6", Color.GREEN) );
+		pig.addArrow(new Arrow("c6", "a5", Color.GREEN));
+		pig.addArrow(new Arrow("a5","c4", Color.GREEN));
+		pig.addArrow(new Arrow("c4", "a3", Color.GREEN));
+		pig.addArrow(new Arrow("a3", "b1", Color.GREEN));
+		
+		pig.createImageFile(new File("C:\\GitChess\\SchulschachSpringerGegenBauern\\images\\Image1ZuegeZaehlen.png"));
 		System.out.println("Finished!");
 	}
 }
