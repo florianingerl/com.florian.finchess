@@ -11,10 +11,13 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import Model.Position;
+import Model.SquareRepresentationConverter;
 import javafx.scene.image.Image;
 
 public class PositionImageGenerator {
@@ -26,6 +29,8 @@ public class PositionImageGenerator {
 	
 	private Color colorBlackSquare = new Color(199, 199, 199);
 	private Color colorWhiteSquare = Color.white;
+	
+	private List<Arrow> arrows = new LinkedList<Arrow>();
 	
 	public PositionImageGenerator(Position position) {
 		this.setPosition(position);
@@ -53,6 +58,67 @@ public class PositionImageGenerator {
 			
 		}
 	}
+	
+	public void addArrow(Arrow arrow) {
+		arrows.add(arrow);
+		
+		
+		
+	}
+	
+	private void drawArrows(Graphics2D g) {
+		for(Arrow arrow : arrows) {
+			drawArrow(g, arrow);
+		}
+	}
+	
+	private void drawArrow(Graphics2D g, Arrow arrow) {
+		int f = SquareRepresentationConverter.getBitFromString(arrow.from);
+		int t = SquareRepresentationConverter.getBitFromString(arrow.to);
+		
+		int fromColumn = f % 8;
+		int fromRow = f / 8;
+		
+		int toColumn = t % 8;
+		int toRow = t / 8;
+		
+		int fromPosX = fromColumn * 100 + 50;
+		int fromPosY = 700 - fromRow * 100 + 50;
+		
+		int toPosX = toColumn * 100 + 50;
+		int toPosY = 700 - toRow * 100 + 50;
+		
+		double dirX = toPosX - fromPosX;
+		double dirY = toPosY - fromPosY;
+		
+		double s = Math.sqrt( dirX * dirX + dirY * dirY );
+		dirX = 1/s * dirX;
+		dirY = 1/s * dirY;
+		
+		int [] xPoints = new int [3];
+		int [] yPoints = new int [3];
+		
+		xPoints[0] = toPosX;
+		yPoints[0] = toPosY;
+		
+		toPosX = (int) (toPosX - 30 * dirX);
+		toPosY = (int) (toPosY - 30 * dirY);
+		
+		g.setStroke(new BasicStroke(10));
+		if(arrow.color != null)
+			g.setColor(arrow.color);
+		else
+			g.setColor(Color.YELLOW);
+		g.drawLine(fromPosX, fromPosY, toPosX, toPosY);
+		
+		xPoints[1] = (int) (toPosX + 30 * dirY);
+		yPoints[1] = (int) (toPosY - 30 * dirX);
+		
+		xPoints[2] = (int) (toPosX - 30 * dirY);
+		yPoints[2] = (int) (toPosY + 30 * dirX);
+		g.fillPolygon(xPoints, yPoints, 3);
+		
+	}
 
 
 
@@ -74,6 +140,7 @@ public class PositionImageGenerator {
 	private void drawChessboard(Graphics2D g) {
 		drawSquares(g);
 		drawPieces(g);
+		drawArrows(g);
 		drawMoveIndicator(g);
 	}
 	
@@ -114,5 +181,15 @@ public class PositionImageGenerator {
 		g.setColor(Color.BLACK);
 		g.setStroke(new BasicStroke(2));
 		g.drawOval(850 - 30, 50 - 30, 60, 60 );
+	}
+	
+	public static void main(String [] args) {
+		Position pos = Position.fromPiecePlacements("wKa8Na4ke2qb1");
+		PositionImageGenerator pig = new PositionImageGenerator(pos);
+		pig.addArrow(new Arrow("a4","c3", Color.GREEN) );
+		pig.addArrow(new Arrow("c3", "b1", Color.BLUE));
+		pig.addArrow(new Arrow("c3", "e2", Color.BLUE));
+		pig.createImageFile(new File("C:\\GitChess\\SchulschachSpringerGegenBauern\\images\\Image5.png"));
+		System.out.println("Finished!");
 	}
 }
