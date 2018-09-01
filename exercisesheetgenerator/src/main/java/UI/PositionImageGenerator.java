@@ -31,6 +31,7 @@ public class PositionImageGenerator {
 	private Color colorWhiteSquare = Color.white;
 	
 	private List<Arrow> arrows = new LinkedList<Arrow>();
+	private List<Cross> crosses = new LinkedList<Cross>();
 	
 	public PositionImageGenerator(Position position) {
 		this.setPosition(position);
@@ -57,6 +58,10 @@ public class PositionImageGenerator {
 			squares[column][row] = square[k];
 			
 		}
+	}
+	
+	public void addCross(Cross cross) {
+		crosses.add(cross);
 	}
 	
 	public void addArrow(Arrow arrow) {
@@ -119,6 +124,33 @@ public class PositionImageGenerator {
 		g.fillPolygon(xPoints, yPoints, 3);
 		
 	}
+	
+	private void drawCrosses(Graphics2D g) {
+		for(Cross cross : crosses) {
+			drawCross(g, cross);
+		}
+	}
+	
+	private void drawCross(Graphics2D g, Cross cross) {
+		int f = SquareRepresentationConverter.getBitFromString(cross.square);
+		
+		int fromColumn = f % 8;
+		int fromRow = f / 8;
+		
+		int fromPosX = fromColumn * 100 + 50;
+		int fromPosY = 700 - fromRow * 100 + 50;
+		
+		if(cross.color != null)
+			g.setColor(cross.color);
+		else
+			g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke(10));
+		
+		g.drawLine(fromPosX - 30, fromPosY -30, fromPosX +30, fromPosY + 30);
+		g.drawLine(fromPosX - 30, fromPosY +30, fromPosX +30, fromPosY -30);
+		
+		
+	}
 
 
 
@@ -141,6 +173,7 @@ public class PositionImageGenerator {
 		drawSquares(g);
 		drawPieces(g);
 		drawArrows(g);
+		drawCrosses(g);
 		drawMoveIndicator(g);
 	}
 	
@@ -184,16 +217,15 @@ public class PositionImageGenerator {
 	}
 	
 	public static void main(String [] args) {
-		Position pos = Position.fromPiecePlacements("wKa8Nb8kh1pb4");
+		Position pos = Position.fromPiecePlacements("bKa7kd5Nf2ph2");
 		PositionImageGenerator pig = new PositionImageGenerator(pos);
 		
-		pig.addArrow(new Arrow("b8","c6", Color.GREEN) );
-		pig.addArrow(new Arrow("c6", "a5", Color.GREEN));
-		pig.addArrow(new Arrow("a5","c4", Color.GREEN));
-		pig.addArrow(new Arrow("c4", "a3", Color.GREEN));
-		pig.addArrow(new Arrow("a3", "b1", Color.GREEN));
+		pig.addCross(new Cross("d3"));
+		pig.addCross(new Cross("e3"));
+		pig.addCross(new Cross("e4"));
+		pig.addCross(new Cross("e5"));
 		
-		pig.createImageFile(new File("C:\\GitChess\\SchulschachSpringerGegenBauern\\images\\Image1ZuegeZaehlen.png"));
+		pig.createImageFile(new File("C:\\GitChess\\SchulschachSpringerGegenBauern\\images\\Image13.png"));
 		System.out.println("Finished!");
 	}
 }
