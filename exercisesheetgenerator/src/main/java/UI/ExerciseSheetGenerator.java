@@ -21,6 +21,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,6 +43,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
@@ -48,7 +51,7 @@ import Model.PgnGame;
 import Model.Position;
 import Model.ReadPGNHeaders;
 
-public class ExerciseSheetGenerator extends JPanel {
+public class ExerciseSheetGenerator {
 
 	public static HashMap<Integer, ImageIcon> pieceIcons;
 
@@ -75,40 +78,66 @@ public class ExerciseSheetGenerator extends JPanel {
 
 	private String title;
 	private List<Exercise> exercises;
+	private int i = 0;
 
-	private JPanel panel = this;
+	private JPanel panel;
 
 	public ExerciseSheetGenerator(String title, List<Exercise> exercises) {
-
 		this.title = title;
 		this.exercises = exercises;
-		buildUI();
 	}
 	
-	private void buildUI() {
-		setLayout(new GridBagLayout());
+	public void generateExerciseSheet(File pdfFile) {
+		i=0;
+		Path dir = null;
+		try {
+			dir = Files.createTempDirectory("pngPages");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		while(i < exercises.size() ) {
+			buildNextPage();
+			File pngFile = new File(dir.toFile(),"Page"+(i/12)+".png") ;
+			saveCurrentPageAsPng(pngFile);
+			File pdfFile2 = new File(dir.toFile(), "Page"+(i/12)+".pdf");
+			ImageToPdfConverter.convertImgToPDF(pngFile,pdfFile2);
+		}
+		
+		try {
+			PdfConcater.concatPdfs(dir.toFile(), pdfFile);
+		} catch (InvalidPasswordException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void buildNextPage() {
+		panel = new JPanel();
+		panel.setLayout(new GridBagLayout());
 		panel.setBackground(Color.WHITE);
 
-		JLabel lbTitle = new JLabel(title, SwingConstants.CENTER) {
-			{
-				setFont(new Font("Arial", Font.BOLD, 50));
-				setBackground(Color.WHITE);
-				Dimension dim = getPreferredSize();
-				dim.height = 75;
-				setPreferredSize(dim);
-			}
-		};
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridwidth = 3;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(0, 0, 50, 0);
+		GridBagConstraints c = null;
+		if (i == 0) {
+			JLabel lbTitle = new JLabel(title, SwingConstants.CENTER) {
+				{
+					setFont(new Font("Arial", Font.BOLD, 50));
+					setBackground(Color.WHITE);
+					Dimension dim = getPreferredSize();
+					dim.height = 75;
+					setPreferredSize(dim);
+				}
+			};
+			c = new GridBagConstraints();
+			c.gridwidth = 3;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(0, 0, 50, 0);
 
-		panel.add(lbTitle, c);
-		int i = 0;
+			panel.add(lbTitle, c);
+		}
 
-		for (Exercise exercise : exercises) {
-
-			
+		while (i < exercises.size()) {
+			Exercise exercise = exercises.get(i);
 			System.out.println(exercise.piecePlacements);
 
 			JPanel panel1 = new JPanel(new GridBagLayout());
@@ -121,26 +150,28 @@ public class ExerciseSheetGenerator extends JPanel {
 
 			panel.add(panel1, c);
 
-			JLabel lblExercise  = new JLabel("Aufgabe "+(i+1) +")"){
+			JLabel lblExercise = new JLabel("Aufgabe " + (i + 1) + ")") {
 				{
 					setFont(new Font("Arial", Font.BOLD, 30));
 					setBackground(Color.WHITE);
 					Dimension dim = getPreferredSize();
-					//dim.height = 75;
+					// dim.height = 75;
 					setPreferredSize(dim);
 					setHorizontalAlignment(SwingConstants.LEFT);
 				}
 			};
-			
+
 			c = new GridBagConstraints();
 			c.fill = GridBagConstraints.NONE;
 			c.gridwidth = 2;
 			c.anchor = GridBagConstraints.WEST;
 			panel1.add(lblExercise, c);
-			
+
 			Position position = null;
-if(exercise.piecePlacements != null) position = Position.fromPiecePlacements(exercise.piecePlacements);
-else if(exercise.fenString != null) position = Position.fromFenString(exercise.fenString);
+			if (exercise.piecePlacements != null)
+				position = Position.fromPiecePlacements(exercise.piecePlacements);
+			else if (exercise.fenString != null)
+				position = Position.fromFenString(exercise.fenString);
 			Chessboard chessboard = new Chessboard(position);
 			chessboard.setColorBlackSquare(new Color(199, 199, 199));
 			chessboard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -176,7 +207,8 @@ else if(exercise.fenString != null) position = Position.fromFenString(exercise.f
 			c.anchor = GridBagConstraints.PAGE_END;
 			panel1.add(piecesToAdd, c);
 
-			JLabel lblQuestion = new JLabel("<html><ul style=\"list-style-type:circle\"><li style=\"display:inline; float:left\">Matt</li><li style=\"display:inline; float:left\">Patt</li><li style=\"display:inline; float:left\">Schwarz zieht 1...</li></ul></html>") {
+			JLabel lblQuestion = new JLabel(
+					"<html><ul style=\"list-style-type:circle\"><li style=\"display:inline; float:left\">Matt</li><li style=\"display:inline; float:left\">Patt</li><li style=\"display:inline; float:left\">Schwarz zieht 1...</li></ul></html>") {
 
 				@Override
 				public Dimension getPreferredSize() {
@@ -207,19 +239,19 @@ else if(exercise.fenString != null) position = Position.fromFenString(exercise.f
 			c.gridwidth = 1;
 			c.gridy = 3;
 
-			//panel1.add(lblQuestion, c);
+			// panel1.add(lblQuestion, c);
 
 			++i;
-			if(i >= 12) break;
+			if (i % 12 == 0)
+				break;
 
 		}
-		
+
 		Dimension dim = panel.getPreferredSize();
 		panel.setSize(dim);
 		layoutComponent(panel);
 	}
-	
-	
+
 	private void layoutComponent(Component component) {
 		synchronized (component.getTreeLock()) {
 			component.doLayout();
@@ -232,7 +264,7 @@ else if(exercise.fenString != null) position = Position.fromFenString(exercise.f
 		}
 	}
 
-	public void saveAsPng(File file) {
+	private void saveCurrentPageAsPng(File file) {
 		GraphicsConfiguration gfxConf = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
 				.getDefaultConfiguration();
 		Dimension dim = panel.getSize();
@@ -246,8 +278,7 @@ else if(exercise.fenString != null) position = Position.fromFenString(exercise.f
 		}
 		System.out.println("Wrote the png file!");
 	}
-	
-	
+
 	public void showInAJFrame() {
 		JFrame frame = new JFrame();
 		JPanel contentPanel = (JPanel) frame.getContentPane();
@@ -265,44 +296,38 @@ else if(exercise.fenString != null) position = Position.fromFenString(exercise.f
 		try {
 			Chessboard.loadChessSet(new File("C:\\Users\\Hermann\\Desktop\\100\\100"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*
-		List<Exercise> exercises = parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt")); */
 		List<Exercise> exercises = parseExercisesFromPgnDatabase(new File("C:/GitChess/KnightVsTwoPawns.pgn"));
 		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Kann der Springer den Bauern stoppen?", exercises);
-		File pngFile = new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.png");
-		esg.saveAsPng(pngFile);
-		ImageToPdfConverter.convertImgToPDF(pngFile, new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.pdf"));
+		esg.generateExerciseSheet(new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.pdf"));
 		System.out.println("Finished!");
 	}
 
 	public static List<Exercise> parseExercisesFromPgnDatabase(File pgnDatabase) {
-try {
-	ReadPGNHeaders rpgnHeaders = new ReadPGNHeaders(new FileInputStream(pgnDatabase) );
-	rpgnHeaders.parseHeaders();
-	List<PgnGame> games = rpgnHeaders.getListOfGames();
-	
-	List<Exercise> exercises = new LinkedList<Exercise>();
-	
-	for(PgnGame game: games){
-	 Exercise e = new Exercise();
-	e.fenString = game.getFenString();
-	exercises.add(e);
-	}
-	
-	return exercises;
-} catch (FileNotFoundException  e) {
-	e.printStackTrace();
-	return null;
-} catch (IOException e) {
-	e.printStackTrace();
-	return null;
-}
+		try {
+			ReadPGNHeaders rpgnHeaders = new ReadPGNHeaders(new FileInputStream(pgnDatabase));
+			rpgnHeaders.parseHeaders();
+			List<PgnGame> games = rpgnHeaders.getListOfGames();
 
-}
+			List<Exercise> exercises = new LinkedList<Exercise>();
+
+			for (PgnGame game : games) {
+				Exercise e = new Exercise();
+				e.fenString = game.getFenString();
+				exercises.add(e);
+			}
+
+			return exercises;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	public static List<Exercise> parseExercisesFromStream(InputStream stream) {
 		List<Exercise> exercises = new LinkedList<Exercise>();
@@ -367,7 +392,5 @@ try {
 
 		return exercises;
 	}
-
-	
 
 }
