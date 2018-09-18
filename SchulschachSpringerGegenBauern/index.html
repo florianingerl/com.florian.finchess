@@ -12,10 +12,12 @@
 <figcaption>Diagramm 1</figcaption>
 </figure>
 </div>
-<p>Das Spiel geht so: Am Anfang jeder Spielrunde baut der Schachlehrer am Demobrett eine Stellung wie in Diagramm 1 auf. Danach einigt man sich mit seinem Gegner darauf, wer welche Farbe bekommt. Wenn man sich nicht einigen kann, werden die Farben ausgelost. Schwarz gewinnt, wenn er den Bauern in eine Dame umwandelt. Weiß gewinnt, wenn er mit dem Springer den Bauern stoppt.
+<p>Das Spiel geht so: Am Anfang jeder Spielrunde baut der Schachlehrer am Demobrett eine Stellung wie in Diagramm 1 auf. Danach einigen sich die Schachschüler mit ihren jeweiligen Gegnern darauf, wer welche Farbe bekommt. Wenn man sich nicht einigen kann, werden die Farben ausgelost. Schwarz gewinnt, wenn er seinen Bauern in eine Dame umwandelt. Weiß gewinnt, wenn er mit seinem Springer den Bauern stoppt. </br>
+Dieses Spiel eignet sich hervorragend dazu, Vorrausberechnung im Schach zu erlernen. Vorrausberechnung ist bei dem Spiel notwendig, um: 1) in jeder Spielrunde die richtige Farbe auszuwählen, also aufgrund der Vorrausberechnung die Stellung richtig zu bewerten und 2) weil es oft einen naheliegenden, verführerischen 1.Zug gibt, der sich aber dann nach 1-10 weiteren Zügen als Fehler herrausstellt.
+
 
 <h2>Methode des "Züge Zählens"</h2>
-Um zu entscheiden, ob der Springer den Bauern stoppen kann, muss man einfach nur die "Züge zählen". In Diagramm 1 braucht Schwarz 3 Züge, um seinen Bauern umzuwandeln, nämlich b3,b2,b1D. Weiß braucht 5 Züge, bis sein Springer das Umwandlungsfeld b1 erreicht, nämlich z.B. Sc6-a5-c4-a3-b1. Mit dieser Überlegung käme man also zu dem Schluss, dass Weiß den Bauern nicht stoppen kann.
+Um zu entscheiden, ob der Springer den Bauern stoppen kann, muss man oft einfach nur die "Züge zählen". In Diagramm 1 braucht Schwarz 3 Züge, um seinen Bauern umzuwandeln, nämlich b3,b2,b1D. Weiß braucht 5 Züge, bis sein Springer das Umwandlungsfeld b1 erreicht, nämlich z.B. Sc6-a5-c4-a3-b1. Mit dieser Überlegung käme man also zu dem Schluss, dass der weiße Springer den Bauern nicht stoppen kann.
 
 <div>
 <figure>
@@ -27,7 +29,7 @@ Um zu entscheiden, ob der Springer den Bauern stoppen kann, muss man einfach nur
 <h2>Aufgaben</h2>
 <div>
 <h3>Aufgabe 1</h3>
-Verändere gegenüber Diagramm 1 die Stellung des Springers. Stelle ihn nacheinander auf die Felder c8,d8,e8,f8,g8 und h8 und entscheide jeweils mit der Methode des "Züge Zählens", ob der Springer den Bauern noch stoppen kann. Was fällt dir auf?
+Verändere gegenüber Diagramm 1 die Stellung des weißen Springers. Stelle ihn nacheinander auf die Felder c8,d8,e8,f8,g8 und h8 und entscheide jeweils mit der Methode des "Züge Zählens", ob der weiße Springer den schwarzen Bauern noch stoppen kann. Was fällt dir auf?
 </div>
 
 <h2>Lösungen</h2>
@@ -39,10 +41,10 @@ Springer auf f8: Der Springer ist zu langsam. Mit Se6-d4-b3-d2-b1 braucht er 5 Z
 Springer auf g8: Der Springer hält den Bauern auf, denn er braucht mit Sf6-d5-c3-b1 nur 4 Züge bis zum Umwandlungsfeld.</br> 
 Springer auf h8: Der Springer ist zu langsam. Mit Sg6-f4-e2-c3-b1 braucht er 5 Züge bis zum Umwandlungsfeld. </br> 
 
-Zusammenfassend: Bei dem Springer auf einem schwarzen Feld ist der Springer zu langsam. Bei dem Springer auf einem weißen Feld hält der Springer den Bauern auf. Dies hängt damit zusammen, dass der Springer mit jedem Zug die Felderfarbe wechselt.
+Zusammenfassend: Mit dem weißen Springer auf einem schwarzen Feld ist der Springer zu langsam. Bei dem Springer auf einem weißen Feld hält der Springer den schwarzen Bauern auf. Dies hängt damit zusammen, dass der Springer mit jedem Zug die Felderfarbe wechselt.
 
 <h2>Der Tempogewinn</h2>
-Betrachten wir die Position in Diagramm 2. Kann Weiß den Bauern nocht stoppen?
+Betrachten wir die Position in Diagramm 2. Kann Weiß den Bauern noch stoppen?
 <div>
 <figure>
 <img src="images/Image2.png" alt="Schachbrett kann nicht angezeigt werden" width="450px" />
@@ -55,7 +57,7 @@ Dieses Tempo gewinnt Weiß durch ein Schachgebot, durch das er gleichzeitig dem 
 Den Zug, den Weiß mit dem Schachgebot gewinnt, nennen wir einen <b>Tempogewinn</b>. <br/>
 Den Zug, den Schwarz mit dem Königszug verwenden muss, nennen wir einen <b>Tempoverlust</b>. <br/>
 
-Also gewinnt Weiß wie folgt: 1.Sf3+ (Tempogewinn) 1...Kh1 (Tempoverlust) 2.Sd2 b1D 3.S:b1. <br/>
+Also gewinnt Weiß wie folgt: 1.Sf3+ (Tempogewinn) 1...Kh1 (Tempoverlust) 2.Sd2 b1D 3.Sxb1. <br/>
 Man kann immer noch die Züge zählen: Nun braucht Schwarz 2 Züge bis zur Bauernumwandlung, nämlich Kh1 und b1D. Weiß braucht immer noch 3 Züge, um das Umwandlungsfeld zu erreichen, nämlich Sf3-d2-b1. Da Weiß beginnt, ist Weiß also schnell genug und kann den Bauern stoppen.
 
 <h2>Aufgaben</h2>
@@ -102,6 +104,9 @@ Man kann immer noch die Züge zählen: Nun braucht Schwarz 2 Züge bis zur Bauer
 </figure>
 </div>
 
+<h2>Tipps</h2>
+Tipp für alle Aufgaben: Auf welchem Feld kann der weiße Springer ein Tempo/einen Zug gewinnen, d.h. auf welchem Feld bietet der weiße Springer dem schwarzen König Schach und kommt dadurch gleichzeitig dem Umwandlungsfeld des schwarzen Bauern näher?
+
 <h2>Die Springergabel</h2>
 Den Doppelangriff des Springers auf zwei Figuren nennt man auch <b>Springergabel</b>. In Diagramm 3,4 und 5 siehst du Beispiele für Springergabeln.
 
@@ -137,7 +142,7 @@ Versucht Weiß das "Gabelfeld" c3 über d5 zu erreichen verliert er: 1.Sd5? Kd2!
 Weiß kann den Bauern nicht stoppen, wenn der weiße König statt auf a8 auf b8 stünde. Denn dann würde Schwarz mit gleichzeitigem Schachgebot umwandeln. 1.Sa4 b1D mit Schach.
 
 <h2>Die Blockade</h2>
-Besetzt der Springer das Umwandlungsfeld oder kontrolliert er es, so hindert er den Bauern an der Vorwärtsbewegung und damit an der Umwandlung. Man sagt dann auch: Der Springer <b>blockiert</b> den Bauern. </br>
+Besetzt der weiße Springer das Umwandlungsfeld des schwarzen Bauern oder kontrolliert er es, so hindert er den Bauern an der Vorwärtsbewegung und damit an der Umwandlung. Man sagt dann auch: Der weiße Springer <b>blockiert</b> den schwarzen Bauern. </br>
 
 Betrachten wir Diagramm 7.
 <div>
@@ -146,15 +151,15 @@ Betrachten wir Diagramm 7.
 <figcaption>Diagramm 7</figcaption>
 </figure>
 </div>  
-Der Bauer ist zwar blockiert, aber kann nicht der schwarze König diese Blockade brechen, indem er den Springer vertreibt? Sehen wir uns einen möglichen Spielverlauf an: 1...Kc2 2.Sa3+ Kb3 3.Sb1 Ka2 3.Sc3+ Kb3 4.Sb1 usw... </br>
+Der schwarze Bauer ist zwar blockiert, aber kann nicht der schwarze König diese Blockade brechen, indem er den weißen Springer vertreibt? Sehen wir uns einen möglichen Spielverlauf an: 1...Kc2 2.Sa3+ Kb3 3.Sb1 Ka2 3.Sc3+ Kb3 4.Sb1 usw... </br>
 Wie lange soll das so weitergehen? Antwort: Nach einer 3-fachen Stellungswiederholung endet eine Schachpartie Unentschieden. Ebenso endet eine Schachpartie Unentschieden, wenn 50 Züge lang nichts geschlagen wird. Außerdem können sich beide Spieler jederzeit auf Unentschieden einigen. Mit diesen Regeln sollte die Stellung in Diagramm 7 auf jeden Fall Unentschieden enden.</br>
 
 Allgemein gilt: 
 <p style="border: solid 2px;">
-Besetzt der Springer das Umwandlungsfeld, so kann diese Blockade nicht gebrochen werden.
+Besetzt der weiße Springer das Umwandlungsfeld des schwarzen Bauern, so kann diese Blockade nicht gebrochen werden.
 </p>
 
-Kontrolliert der Springer hingegen nur das Umwandlungsfeld, so gibt es Fälle, bei denen diese Blockade gebrochen werden kann. Sehen wir uns dazu Diagramm 8 an.
+<i>Kontrolliert</i> der weiße Springer hingegen nur das Umwandlungsfeld, so gibt es Fälle, bei denen diese Blockade gebrochen werden kann. Sehen wir uns dazu Diagramm 8 an.
 
 <div>
 <figure>
@@ -164,7 +169,7 @@ Kontrolliert der Springer hingegen nur das Umwandlungsfeld, so gibt es Fälle, b
 </div>  
 Weiß verliert nach 1.Sd5 Kd3 (1...d1D? 2.Se3+ Familienschach) 2.Sf4+ Ke3 3.Sd5+ Kd4 0-1 </br>
 
-Auch im nächsten Beispiel kontrolliert Weiß das Umwandlungsfeld und verliert trotzdem:
+Auch im nächsten Beispiel kontrolliert der weiße Springer das Umwandlungsfeld und Weiß verliert trotzdem:
 <div>
 <figure>
 <img src="images/Image9.png" alt="Schachbrett kann nicht angezeigt werden" width="450px"/>
@@ -173,11 +178,15 @@ Auch im nächsten Beispiel kontrolliert Weiß das Umwandlungsfeld und verliert t
 </div>  
 Weiß verliert nach 1.Sb3+ Kd1 0-1
 
+<h2>Aufgaben</h2>
+
+<h3>Aufgabe 1</h3> Wenn du gegenüber Diagramm 9 alle Figuren um eine Linie nach rechts versetzt, ändert sich dann dadurch etwas an der Stellungsbeurteilung?
+
 <h2>Die Blockade des Randbauern</h2>
 
 Die erste Regel lautet:
 <p style="border: solid 2px;" >
-Wird der Bauer auf der 3.Reihe blockiert, so ist diese Blockade nicht zu brechen.
+Blockiert der weiße Springer den schwarzen Bauern auf der 3.Reihe, so kann diese Blockade nicht gebrochen werden.
 </p>
 Sehen wir uns dazu Diagramm 10 an.
 <div>
@@ -188,20 +197,21 @@ Sehen wir uns dazu Diagramm 10 an.
 </div> 
 1.Sg4 Kg3 2.Se3! Kf2 (2...h2 3.Sf1+) 3. Sg4+ Kf3 4.Sh2+ Kg3 5.Sf1+ Kg2 6.Se3+ Kf3 7.Sf1 Kf2 8.Sh2 1/2-1/2 </br>
 
-Die zweite Regel lautet:
-<p style="border: solid 2px;">
-Ist der Bauer schon auf der 2.Reihe, so ist die Blockade nur dann nicht zu brechen, wenn der weiße König nahe genug steht.
-</p>
+Sehen wir uns nun den Fall, dass der schwarze Bauer schon auf der 2.Reihe steht, an.
 
-Sehen wir uns dazu Diagramm 11 an:
 <div>
 <figure>
 <img src="images/Image11.png" alt="Schachbrett kann nicht angezeigt werden" width="450px"/>
 <figcaption>Diagramm 11</figcaption>
 </figure>
 </div> 
-Die Partie in endet Unentschieden nach 1.Ke3 Kxh1 2.Kf2 Patt </br>
-Wäre hingegen Schwarz am Zug, so würde er mit 1...Kxh1 gewinnen.
+Die Partie endet Unentschieden nach 1.Ke3 Kxh1 2.Kf2 Patt </br>
+Wäre hingegen Schwarz am Zug, so würde er mit 1...Kxh1 gewinnen.</br>
+
+Die zweite Regel lautet also:
+<p style="border: solid 2px;">
+Ist der schwarze Bauer schon auf der 2.Reihe, so hängt der Ausgang der Partie davon ab, ob der weiße König nahe genug steht, um den schwarzen König in der Ecke pattzusetzen.
+</p>
 
 <h2>Die Barriere</h2>
 <div>
@@ -210,9 +220,9 @@ Wäre hingegen Schwarz am Zug, so würde er mit 1...Kxh1 gewinnen.
 <figcaption>Diagramm 12</figcaption>
 </figure>
 </div> 
-Die Felder mit dem Kreuz bilden eine <b>Barriere</b>, durch die der schwarze König nicht hindurch kann. Die Felder e2 und e4 kann der schwarze König nicht betreten, weil sie vom Springer kontrolliert werden. Auf 1...Ke3/d2 würde die Springergabel 2.Sf1+ folgen. </br>
+Die Felder mit dem Kreuz bilden eine <b>Barriere</b>, durch die der schwarze König nicht hindurch kann. Die Felder e2 und e4 kann der schwarze König nicht betreten, weil sie vom weißen Springer kontrolliert werden. Die Felder e3 und d2 kann der schwarze König auch nicht betreten, denn sonst würde die Springergabel Sf1+ folgen. </br>
 
-Umgeht Schwarz die Barriere, so kommt es darauf an, ob der weiße König schnell genug ist, um den anderen in der Ecke pattzusetzen. Zählen wir also die Züge: Schwarz braucht mit Kc2-d1-e1-f2-g2-h1 oder Kd4-e5-f4-f3-g2-h1 6 Züge, um den weißen Springer in der Ecke zu schlagen.
+Umgeht Schwarz die Barriere, so kommt es darauf an, ob der weiße König schnell genug ist, um den schwarzen König in der Ecke pattzusetzen. Zählen wir also die Züge: Schwarz braucht mit Kc2-d1-e1-f2-g2-h1 oder Kd4-e5-f4-f3-g2-h1 6 Züge, um den weißen Springer in der Ecke zu schlagen.
 Weiß braucht hingegen mit Sh1, Kb6-c5-d4-e3-f2 auch 6 Züge, um den schwarzen König in der Ecke pattzusetzen, also Unentschieden. </br>
 
 Eine andere Barriere sehen wir im nächsten Diagramm:
@@ -222,20 +232,9 @@ Eine andere Barriere sehen wir im nächsten Diagramm:
 <figcaption>Diagramm 13</figcaption>
 </figure>
 </div>
-Wie oben muss der schwarze König die Barriere umgehen wir wir können die Züge zählen, um vorherzusehen, wie die Partie ausgeht.
+Wie oben muss der schwarze König die Barriere umgehen und wir können die Züge zählen, um vorherzusehen, wie die Partie ausgeht.
 
 
-<div style="float:left;">
-<figure>
-<img src="images/Image13.png" alt="Schachbrett kann nicht angezeigt werden" width="450px"/>
-<figcaption>Diagramm 13</figcaption>
-</figure>
-</div>
-<div style="float:left;">
-<figure>
-<img src="images/Image13.png" alt="Schachbrett kann nicht angezeigt werden" width="450px"/>
-<figcaption>Diagramm 13</figcaption>
-</figure>
 </div>
 </body>
 </html>
