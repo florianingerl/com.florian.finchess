@@ -44,8 +44,9 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
-
+import Model.PgnGame;
 import Model.Position;
+import Model.ReadPGNHeaders;
 
 public class ExerciseSheetGenerator extends JPanel {
 
@@ -137,7 +138,10 @@ public class ExerciseSheetGenerator extends JPanel {
 			c.anchor = GridBagConstraints.WEST;
 			panel1.add(lblExercise, c);
 			
-			Chessboard chessboard = new Chessboard(Position.fromPiecePlacements(exercise.piecePlacements));
+			Position position = null;
+if(exercise.piecePlacements != null) position = Position.fromPiecePlacements(exercise.piecePlacements);
+else if(exercise.fenString != null) position = Position.fromFenString(exercise.fenString);
+			Chessboard chessboard = new Chessboard(position);
 			chessboard.setColorBlackSquare(new Color(199, 199, 199));
 			chessboard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -206,6 +210,7 @@ public class ExerciseSheetGenerator extends JPanel {
 			//panel1.add(lblQuestion, c);
 
 			++i;
+			if(i >= 12) break;
 
 		}
 		
@@ -263,14 +268,41 @@ public class ExerciseSheetGenerator extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		/*
 		List<Exercise> exercises = parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt"));
+				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt")); */
+		List<Exercise> exercises = parseExercisesFromPgnDatabase(new File("C:/GitChess/KnightVsTwoPawns.pgn"));
 		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Kann der Springer den Bauern stoppen?", exercises);
-		File pngFile = new File("C:/Users/Hermann/Desktop/ExerciseSheet.png");
+		File pngFile = new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.png");
 		esg.saveAsPng(pngFile);
-		ImageToPdfConverter.convertImgToPDF(pngFile, new File("C:/Users/Hermann/Desktop/ExerciseSheet.pdf"));
+		ImageToPdfConverter.convertImgToPDF(pngFile, new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.pdf"));
 		System.out.println("Finished!");
 	}
+
+	public static List<Exercise> parseExercisesFromPgnDatabase(File pgnDatabase) {
+try {
+	ReadPGNHeaders rpgnHeaders = new ReadPGNHeaders(new FileInputStream(pgnDatabase) );
+	rpgnHeaders.parseHeaders();
+	List<PgnGame> games = rpgnHeaders.getListOfGames();
+	
+	List<Exercise> exercises = new LinkedList<Exercise>();
+	
+	for(PgnGame game: games){
+	 Exercise e = new Exercise();
+	e.fenString = game.getFenString();
+	exercises.add(e);
+	}
+	
+	return exercises;
+} catch (FileNotFoundException  e) {
+	e.printStackTrace();
+	return null;
+} catch (IOException e) {
+	e.printStackTrace();
+	return null;
+}
+
+}
 
 	public static List<Exercise> parseExercisesFromStream(InputStream stream) {
 		List<Exercise> exercises = new LinkedList<Exercise>();
