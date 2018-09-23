@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import Model.PgnGame;
+import Model.Position;
 import Model.ReadPGN;
 import Model.ReadPGNHeaders;
 import Model.VariationTree;
@@ -32,6 +33,9 @@ public class SolutionSheetGenerator {
 			sb.append("}\n");
 			}
 			sb.append("\\mainline{");
+			
+			Position pos = Position.fromFenString(game.getFenString());
+			
 			if(game.getFenString() != null)
 				sb.append(vt.toStringSAN(game.getFenString()));
 			else 

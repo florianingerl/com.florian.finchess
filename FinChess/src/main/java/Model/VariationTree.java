@@ -34,6 +34,10 @@ public class VariationTree {
 		return root.toStringSAN(new Position());
 	}
 	
+	public String toStringSAN(String fenString) {
+		return root.toStringSAN(Position.fromFenString(fenString));
+	}
+	
 	//From the list of integers is clear, which variations to choose from the root to get
 	//to the desired position
 	
