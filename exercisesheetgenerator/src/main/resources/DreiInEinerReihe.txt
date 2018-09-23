@@ -2,13 +2,13 @@ pp:wNb3Bb1Rh1nc4bd4rh8
 
 pp:wNc2Bd4Rd5nc5bf4rh3
 
-pp:wNc4Be5Rd6be4re3nc5
+pp:bNc4Be5Rd6be4re3nc5
 
 pp:brd4bd3ne5Bd5Ne4Re3
 
 pp:wRc5Bd5Nd4bb5ne5re4
 
-pp:wNc6Bd5Rd4bc5re6nf3
+pp:bBc3Re4Ne1rd3nd5bf5
 
 pp:wNb5Bd5Rd6bc5ne4rd4
 
@@ -20,10 +20,29 @@ pp:bbb4nc4re5Nb5Bb3Rd4
 
 pp:bnd5be4rf4Rd6Ne5Bd4
 
-pp:wNb5Bd5Rd6bc5ne4rd4
-
 pp:wbb4re4ne5Rc4Nd5Bd4
 
+pp:wNc4Re6Be4re3ne5bf5
 
+pp:wNc4Bd5Re6rd4ne5bf5
 
+pp:wNc4Rd5Bc6nc5be5rd4
+
+pp:bRd5Bf5Nf3nd3re4be5
+
+pp:wNd3Be4Rf4nd5rd4bf3
+
+pp:wNb4Rd6Bd5bd7rf4ne6
+
+pp:bNc7Rd5Bd4bc5re6ne4
+
+pp:wNd5Rd4Bf6bc5re6ne4
+
+pp:bNc4Re4Be3nd3rd4be5
+
+pp:wNf2Re4Be5nc4be3rg6
+
+pp:wRc6Be5Nd4nc4bg5rg6
+
+pp:wNb2Bc3Re4nd6be5re3
 

@@ -95,12 +95,14 @@ public class ExerciseSheetGenerator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		int pageNumber = 1;
 		while(i < exercises.size() ) {
 			buildNextPage();
-			File pngFile = new File(dir.toFile(),"Page"+(i/12)+".png") ;
+			File pngFile = new File(dir.toFile(),"Page"+pageNumber+".png") ;
 			saveCurrentPageAsPng(pngFile);
-			File pdfFile2 = new File(dir.toFile(), "Page"+(i/12)+".pdf");
+			File pdfFile2 = new File(dir.toFile(), "Page"+pageNumber+".pdf");
 			ImageToPdfConverter.convertImgToPDF(pngFile,pdfFile2);
+			++pageNumber;
 		}
 		
 		try {
@@ -137,6 +139,7 @@ public class ExerciseSheetGenerator {
 		}
 
 		while (i < exercises.size()) {
+			System.out.println("i="+i);
 			Exercise exercise = exercises.get(i);
 			System.out.println(exercise.piecePlacements);
 
@@ -298,7 +301,8 @@ public class ExerciseSheetGenerator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		List<Exercise> exercises = parseExercisesFromPgnDatabase(new File("C:/GitChess/KnightVsTwoPawns.pgn"));
+		//List<Exercise> exercises = parseExercisesFromPgnDatabase(new File("C:/GitChess/KnightVsTwoPawns.pgn"));
+		List<Exercise> exercises = parseExercisesFromStream( ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("DreiInEinerReihe.txt"));
 		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Kann der Springer den Bauern stoppen?", exercises);
 		esg.generateExerciseSheet(new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.pdf"));
 		System.out.println("Finished!");
