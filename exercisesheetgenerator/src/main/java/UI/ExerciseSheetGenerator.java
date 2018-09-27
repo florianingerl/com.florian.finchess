@@ -302,8 +302,8 @@ public class ExerciseSheetGenerator {
 			e.printStackTrace();
 		}
 		//List<Exercise> exercises = parseExercisesFromPgnDatabase(new File("C:/GitChess/KnightVsTwoPawns.pgn"));
-		List<Exercise> exercises = parseExercisesFromStream( ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("DreiInEinerReihe.txt"));
-		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Kann der Springer den Bauern stoppen?", exercises);
+		List<Exercise> exercises = parseExercisesFromStream( ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("MattPattOderSchwarzZieht.txt"));
+		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Matt, Patt oder Schwarz zieht 1...", exercises);
 		esg.generateExerciseSheet(new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.pdf"));
 		System.out.println("Finished!");
 	}
@@ -343,7 +343,6 @@ public class ExerciseSheetGenerator {
 			String line = scanner.nextLine();
 			if (line.startsWith("pp:")) {
 				exercise.piecePlacements = line.substring(3);
-
 			} else if (line.startsWith("q:")) {
 				exercise.question = line.substring(2);
 			} else if (line.startsWith("pta:")) {
@@ -390,6 +389,10 @@ public class ExerciseSheetGenerator {
 				exercises.add(exercise);
 				exercise = new Exercise();
 			}
+		}
+		
+		if(exercises.get(exercises.size()-1) != exercise) {
+			exercises.add(exercise);
 		}
 
 		scanner.close();
