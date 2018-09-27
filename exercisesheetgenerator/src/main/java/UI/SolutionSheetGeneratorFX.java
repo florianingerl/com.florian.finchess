@@ -23,8 +23,9 @@ public class SolutionSheetGeneratorFX extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		exercises = ExerciseSheetGenerator.parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer2.txt"));
+		exercises = null;
+		//ExerciseSheetGenerator.parseExercisesFromStream(
+			//	ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer2.txt"));
 		buildUI();
 		Scene scene = new Scene(gridPane, PDRectangle.A4.getWidth(), PDRectangle.A4.getHeight());
 		scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm() );

@@ -73,8 +73,9 @@ public class ExerciseSheetGeneratorFX extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		title = "Kann der Springer den Bauern stoppen?";
-		exercises = ExerciseSheetGenerator.parseExercisesFromStream(
-				ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt"));
+		exercises = null; 
+		//ExerciseSheetGenerator.parseExercisesFromStream(
+		//		ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("SpringerGegenBauer.txt"));
 		buildUI();
 		
 		Scene scene = new Scene(gridPane, PDRectangle.A4.getWidth(), PDRectangle.A4.getHeight());

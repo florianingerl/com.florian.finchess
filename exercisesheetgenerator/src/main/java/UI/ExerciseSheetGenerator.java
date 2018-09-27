@@ -6,13 +6,9 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import javax.swing.ImageIcon;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
@@ -20,7 +16,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -28,24 +23,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.swing.JTextArea;
-import javax.swing.BoxLayout;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import org.apache.pdfbox.contentstream.operator.text.SetTextHorizontalScaling;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import Model.PgnGame;
 import Model.Position;
@@ -86,9 +80,9 @@ public class ExerciseSheetGenerator {
 		this.title = title;
 		this.exercises = exercises;
 	}
-	
+
 	public void generateExerciseSheet(File pdfFile) {
-		i=0;
+		i = 0;
 		Path dir = null;
 		try {
 			dir = Files.createTempDirectory("pngPages");
@@ -96,15 +90,15 @@ public class ExerciseSheetGenerator {
 			e.printStackTrace();
 		}
 		int pageNumber = 1;
-		while(i < exercises.size() ) {
+		while (i < exercises.size()) {
 			buildNextPage();
-			File pngFile = new File(dir.toFile(),"Page"+pageNumber+".png") ;
+			File pngFile = new File(dir.toFile(), "Page" + pageNumber + ".png");
 			saveCurrentPageAsPng(pngFile);
-			File pdfFile2 = new File(dir.toFile(), "Page"+pageNumber+".pdf");
-			ImageToPdfConverter.convertImgToPDF(pngFile,pdfFile2);
+			File pdfFile2 = new File(dir.toFile(), "Page" + pageNumber + ".pdf");
+			ImageToPdfConverter.convertImgToPDF(pngFile, pdfFile2);
 			++pageNumber;
 		}
-		
+
 		try {
 			PdfConcater.concatPdfs(dir.toFile(), pdfFile);
 		} catch (InvalidPasswordException e) {
@@ -139,7 +133,7 @@ public class ExerciseSheetGenerator {
 		}
 
 		while (i < exercises.size()) {
-			System.out.println("i="+i);
+			System.out.println("i=" + i);
 			Exercise exercise = exercises.get(i);
 			System.out.println(exercise.piecePlacements);
 
@@ -296,15 +290,54 @@ public class ExerciseSheetGenerator {
 	}
 
 	public static void main(String[] args) {
+
+		Options options = new Options();
+
+		Option ochessset = new Option("c", "chessset", true, "directory path");
+		ochessset.setRequired(false);
+		options.addOption(ochessset);
+
+		Option ooutput = new Option("o", "output", true, "output pdf-file");
+		ooutput.setRequired(true);
+		options.addOption(ooutput);
+
+		Option oinput = new Option("i", "input", true, "input file");
+		oinput.setRequired(true);
+		options.addOption(oinput);
+
+		Option otitle = new Option("t", "title", true, "title");
+		otitle.setRequired(true);
+		options.addOption(otitle);
+
+		CommandLineParser parser = new DefaultParser();
+		HelpFormatter formatter = new HelpFormatter();
+		CommandLine cmd = null;
+
 		try {
-			Chessboard.loadChessSet(new File("C:\\Users\\Hermann\\Desktop\\100\\100"));
+			cmd = parser.parse(options, args);
+		} catch (ParseException e) {
+			System.out.println(e.getMessage());
+			formatter.printHelp("utility-name", options);
+
+			System.exit(1);
+		}
+
+		try {
+			if (cmd.getOptionValue("chessset") != null)
+				Chessboard.loadChessSet(new File(cmd.getOptionValue("chessset")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//List<Exercise> exercises = parseExercisesFromPgnDatabase(new File("C:/GitChess/KnightVsTwoPawns.pgn"));
-		List<Exercise> exercises = parseExercisesFromStream( ExerciseSheetGenerator.class.getClassLoader().getResourceAsStream("MattPattOderSchwarzZieht.txt"));
-		ExerciseSheetGenerator esg = new ExerciseSheetGenerator("Matt, Patt oder Schwarz zieht 1...", exercises);
-		esg.generateExerciseSheet(new File("C:\\Users\\Emmi_\\Desktop\\ExerciseSheet.pdf"));
+
+		String inputFile = cmd.getOptionValue("input");
+		List<Exercise> exercises = null;
+		if (inputFile.endsWith(".pgn"))
+			exercises = parseExercisesFromPgnDatabase(new File(inputFile));
+		else if (inputFile.endsWith(".txt"))
+			exercises = parseExercisesFromTxtFile(new File(inputFile));
+		ExerciseSheetGenerator esg = new ExerciseSheetGenerator(cmd.getOptionValue("title"), exercises);
+
+		esg.generateExerciseSheet(new File(cmd.getOptionValue("output")));
 		System.out.println("Finished!");
 	}
 
@@ -333,71 +366,80 @@ public class ExerciseSheetGenerator {
 
 	}
 
-	public static List<Exercise> parseExercisesFromStream(InputStream stream) {
-		List<Exercise> exercises = new LinkedList<Exercise>();
+	public static List<Exercise> parseExercisesFromTxtFile(File txtFile) {
 
-		Scanner scanner = new Scanner(stream);
-		Exercise exercise = new Exercise();
+		System.out.println("Parsing exercises from txtFile");
 
-		while (scanner.hasNextLine()) {
-			String line = scanner.nextLine();
-			if (line.startsWith("pp:")) {
-				exercise.piecePlacements = line.substring(3);
-			} else if (line.startsWith("q:")) {
-				exercise.question = line.substring(2);
-			} else if (line.startsWith("pta:")) {
-				for (int i = 4; i < line.length(); ++i) {
-					int piece = Position.EMPTY;
-					switch (line.charAt(i)) {
-					case 'Q':
-						piece = Position.W_QUEEN;
-						break;
-					case 'q':
-						piece = Position.B_QUEEN;
-						break;
-					case 'N':
-						piece = Position.W_KNIGHT;
-						break;
-					case 'P':
-						piece = Position.W_PAWN;
-						break;
-					case 'p':
-						piece = Position.B_PAWN;
-						break;
-					case 'b':
-						piece = Position.B_BISHOP;
-						break;
-					case 'r':
-						piece = Position.B_ROOK;
-						break;
-					case 'K':
-						piece = Position.W_KING;
-						break;
-					case 'B':
-						piece = Position.W_BISHOP;
-						break;
-					case 'R':
-						piece = Position.W_ROOK;
-						break;
-					case 'n':
-						piece = Position.B_KNIGHT;
-						break;
+		try (FileInputStream stream = new FileInputStream(txtFile)) {
+			List<Exercise> exercises = new LinkedList<Exercise>();
+
+			Scanner scanner = new Scanner(stream);
+			Exercise exercise = new Exercise();
+
+			while (scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				if (line.startsWith("pp:")) {
+					exercise.piecePlacements = line.substring(3);
+				} else if (line.startsWith("q:")) {
+					exercise.question = line.substring(2);
+				} else if (line.startsWith("pta:")) {
+					for (int i = 4; i < line.length(); ++i) {
+						int piece = Position.EMPTY;
+						switch (line.charAt(i)) {
+						case 'Q':
+							piece = Position.W_QUEEN;
+							break;
+						case 'q':
+							piece = Position.B_QUEEN;
+							break;
+						case 'N':
+							piece = Position.W_KNIGHT;
+							break;
+						case 'P':
+							piece = Position.W_PAWN;
+							break;
+						case 'p':
+							piece = Position.B_PAWN;
+							break;
+						case 'b':
+							piece = Position.B_BISHOP;
+							break;
+						case 'r':
+							piece = Position.B_ROOK;
+							break;
+						case 'K':
+							piece = Position.W_KING;
+							break;
+						case 'B':
+							piece = Position.W_BISHOP;
+							break;
+						case 'R':
+							piece = Position.W_ROOK;
+							break;
+						case 'n':
+							piece = Position.B_KNIGHT;
+							break;
+						}
+						exercise.piecesToAdd.add(piece);
 					}
-					exercise.piecesToAdd.add(piece);
+				} else {
+					exercises.add(exercise);
+					exercise = new Exercise();
 				}
-			} else {
-				exercises.add(exercise);
-				exercise = new Exercise();
 			}
-		}
-		
-		if(exercises.get(exercises.size()-1) != exercise) {
-			exercises.add(exercise);
-		}
 
-		scanner.close();
+			if (exercises.get(exercises.size() - 1) != exercise && (exercise.piecePlacements!=null || exercise.fenString !=null ) ) {
+				exercises.add(exercise);
+			}
 
-		return exercises;
+			scanner.close();
+
+			return exercises;
+
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return null;
 	}
 
 }
