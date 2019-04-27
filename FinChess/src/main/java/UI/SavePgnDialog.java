@@ -11,8 +11,6 @@ import java.util.Date;
 
 import javax.swing.*;
 
-import org.hamcrest.core.IsNull;
-
 import Model.PgnGame;
 
 public class SavePgnDialog extends JDialog implements ActionListener{
